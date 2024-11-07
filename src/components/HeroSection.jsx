@@ -1,38 +1,127 @@
 // src/components/HeroSection.jsx
 import React from 'react';
 import styled from 'styled-components';
+import { FaGithub, FaLinkedin, FaInstagram } from 'react-icons/fa';
 
 const HeroContainer = styled.section`
   display: flex;
-  flex-direction: column;
   align-items: center;
-  justify-content: center;
-  text-align: center;
-  padding: 100px 20px; /* Ajusta para não cobrir o Header */
-  width: 100%;
+  justify-content: space-between;
+  width: 100vw; /* Garante que ocupe a largura completa da viewport */
   height: 100vh;
-  background-color: #222;
+  padding: 0 20px;
+  background-color: #1E1E1E;
   color: #fff;
+  font-family: 'Inter', sans-serif;
+  overflow-x: hidden; /* Remove qualquer rolagem horizontal */
+  box-sizing: border-box;
+`;
+
+const TextContainer = styled.div`
+  max-width: 500px;
+  margin-left: 260px;
+  margin-right: 20px;
+`;
+
+const Subtitle = styled.p`
+  font-size: 14px;
+  letter-spacing: 2px;
+  color: #7E74F1;
+  margin: 0 0 10px;
 `;
 
 const Name = styled.h1`
-  font-size: 3em;
+  font-size: 48px;
+  color: #fff;
+  margin: 0;
+  font-weight: 700;
+  display: flex;
+  gap: 8px;
+  font-family: 'Plus Jakarta Sans', sans-serif;
+`;
+
+const HighlightedName = styled.span`
   color: #7E74F1;
 `;
 
 const Description = styled.p`
-  max-width: 600px;
-  font-size: 1.2em;
+  font-size: 18px;
+  color: #d3d3d3;
+  line-height: 1.6;
+  margin: 20px 0;
+`;
+
+const SocialMedia = styled.div`
+  display: flex;
+  gap: 20px;
+  margin-top: 20px;
+
+  a {
+    color: #fff;
+    font-size: 24px;
+    transition: color 0.3s;
+
+    &:hover {
+      color: #7E74F1;
+    }
+  }
+`;
+
+const ImageContainer = styled.div`
+  position: relative;
+  width: 340px;
+  height: 420px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-right: 260px;
+  margin-left: 40px;
+`;
+
+const BackgroundShape = styled.div`
+  position: absolute;
+  width: 340px;
+  height: 420px;
+  background-color: #7E74F1;
+  transform: rotate(-10deg);
+  border-radius: 20px;
+`;
+
+const ProfileImage = styled.img`
+  position: relative;
+  width: 320px;
+  height: 420px;
+  border-radius: 20px;
+  z-index: 1;
 `;
 
 const HeroSection = () => {
   return (
     <HeroContainer>
-      <Name>Juan Souza</Name>
-      <Description>
-        Creative software engineer with more than 3 years of experience in ...
-      </Description>
-      <img src="path/to/profile-pic.jpg" alt="Juan Souza" style={{ width: '200px', borderRadius: '10px' }} />
+      <TextContainer>
+        <Subtitle>MY NAME IS</Subtitle>
+        <Name>
+          Juan <HighlightedName>Souza.</HighlightedName>
+        </Name>
+        <Description>
+          Creative software engineer with more than +3 years of experience in enterprise companies and startups. Proficient in Flutter, Android Kotlin and Express.js. Passionate about UI/UX.
+        </Description>
+        <SocialMedia>
+          <a href="https://github.com" target="_blank" rel="noopener noreferrer">
+            <FaGithub />
+          </a>
+          <a href="https://linkedin.com" target="_blank" rel="noopener noreferrer">
+            <FaLinkedin />
+          </a>
+          <a href="https://instagram.com" target="_blank" rel="noopener noreferrer">
+            <FaInstagram />
+          </a>
+        </SocialMedia>
+      </TextContainer>
+      <ImageContainer>
+        <BackgroundShape />
+        <ProfileImage src="/src/assets/juan-image.jpeg" alt="Juan Souza" />
+      </ImageContainer>
     </HeroContainer>
   );
 };
