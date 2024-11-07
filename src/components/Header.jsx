@@ -65,7 +65,7 @@ const NavLinks = styled.nav`
 const RightContent = styled.div`
   display: flex;
   align-items: center;
-  gap: 20px;
+  gap: 40px;
   margin-right: 50px; /* Margem à direita do conteúdo */
 
   @media (max-width: 768px) {

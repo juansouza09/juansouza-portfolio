@@ -7,13 +7,13 @@ const HeroContainer = styled.section`
   display: flex;
   align-items: center;
   justify-content: space-between;
-  width: 100vw; /* Garante que ocupe a largura completa da viewport */
+  width: 100vw;
   height: 100vh;
   padding: 0 20px;
   background-color: #1E1E1E;
   color: #fff;
   font-family: 'Inter', sans-serif;
-  overflow-x: hidden; /* Remove qualquer rolagem horizontal */
+  overflow-x: hidden;
   box-sizing: border-box;
 `;
 
@@ -23,11 +23,25 @@ const TextContainer = styled.div`
   margin-right: 20px;
 `;
 
-const Subtitle = styled.p`
+const Subtitle = styled.div`
+  display: flex;
+  align-items: center;
+  gap: 10px; /* Espaçamento entre o traço e o texto */
+  margin-bottom: 10px;
+`;
+
+const Line = styled.span`
+  width: 15px; /* Largura do traço */
+  height: 1px;
+  background-color: #D9D9D9;
+`;
+
+const SubtitleText = styled.span`
   font-size: 14px;
   letter-spacing: 2px;
-  color: #7E74F1;
-  margin: 0 0 10px;
+  color: #656D72;
+  font-family: 'Inter', sans-serif;
+  font-weight: 500; /* Inter Medium */
 `;
 
 const Name = styled.h1`
@@ -99,7 +113,10 @@ const HeroSection = () => {
   return (
     <HeroContainer>
       <TextContainer>
-        <Subtitle>MY NAME IS</Subtitle>
+        <Subtitle>
+          <Line />
+          <SubtitleText>MY NAME IS</SubtitleText>
+        </Subtitle>
         <Name>
           Juan <HighlightedName>Souza.</HighlightedName>
         </Name>
