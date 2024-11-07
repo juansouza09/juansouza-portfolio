@@ -23,7 +23,7 @@ const SocialIcons = styled.div`
     font-size: 20px;
 
     &:hover {
-      color: #0f9bff;
+      color: #7E74F1;
     }
   }
 `;

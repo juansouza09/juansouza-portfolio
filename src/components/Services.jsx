@@ -31,7 +31,7 @@ const ServiceItem = styled.div`
   color: #fff;
 
   h3 {
-    color: #0f9bff;
+    color: #7E74F1;
   }
 `;
 

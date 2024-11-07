@@ -17,7 +17,7 @@ const HeroContainer = styled.section`
 
 const Name = styled.h1`
   font-size: 3em;
-  color: #0f9bff;
+  color: #7E74F1;
 `;
 
 const Description = styled.p`
