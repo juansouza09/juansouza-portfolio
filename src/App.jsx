@@ -4,6 +4,7 @@ import HeroSection from './components/HeroSection';
 import Services from './components/Services';
 import PortfolioSection from './components/PortfolioSection';
 import Footer from './components/Footer';
+import './i18n';
 
 const App = () => {
   return (

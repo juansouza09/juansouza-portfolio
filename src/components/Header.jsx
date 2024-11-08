@@ -1,10 +1,12 @@
 // src/components/Header.jsx
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import styled from 'styled-components';
-import { FiMoon } from 'react-icons/fi';
 import { HiOutlineMenuAlt3 } from 'react-icons/hi';
 import Select from 'react-select';
 import Flag from 'react-world-flags';
+import { useTranslation } from 'react-i18next';
+import resumeEN from '../assets/resume-en.pdf';
+import resumePT from '../assets/resume-pt.pdf';
 
 const HeaderContainer = styled.header`
   display: flex;
@@ -146,9 +148,15 @@ const FlagSelect = styled(Select)`
 `;
 
 const Header = () => {
+  const { t, i18n } = useTranslation();
   const [menuOpen, setMenuOpen] = useState(false);
-  const [language, setLanguage] = useState("US");
   const [activeLink, setActiveLink] = useState("#services");
+  const [selectedLanguage, setSelectedLanguage] = useState(i18n.language);
+
+
+  useEffect(() => {
+    setSelectedLanguage(i18n.language); // Define a bandeira inicial ao carregar o site
+  }, [i18n.language]);
 
   const toggleMenu = () => {
     setMenuOpen(!menuOpen);
@@ -159,14 +167,16 @@ const Header = () => {
   };
 
   const languageOptions = [
-    { value: "US", label: <Flag code="US" width="20" alt="English" /> },
-    { value: "BR", label: <Flag code="BR" width="20" alt="Português" /> }
+    { value: "en", label: <Flag code="US" width="20" alt="English" /> },
+    { value: "pt", label: <Flag code="BR" width="20" alt="Português" /> }
   ];
 
   const handleLanguageChange = (selectedOption) => {
-    setLanguage(selectedOption.value);
-    // Lógica para alterar o idioma do site pode ser adicionada aqui
+    i18n.changeLanguage(selectedOption.value); // Altera o idioma no i18n
+    setSelectedLanguage(selectedOption.value); // Atualiza a bandeira selecionada
   };
+
+  const resumeFile = i18n.language === 'pt' ? resumePT : resumeEN;
 
   return (
     <HeaderContainer>
@@ -180,7 +190,7 @@ const Header = () => {
             fontWeight: activeLink === "#services" ? "500" : "300",
           }}
         >
-          Services
+          {t('services')}
         </a>
         <a
           href="#portfolio"
@@ -189,7 +199,7 @@ const Header = () => {
             fontWeight: activeLink === "#portfolio" ? "500" : "300",
           }}
         >
-          Portfolio
+          {t('portfolio')}
         </a>
         <a
           href="#experience"
@@ -198,7 +208,7 @@ const Header = () => {
             fontWeight: activeLink === "#experience" ? "500" : "300",
           }}
         >
-          Experience
+          {t('experience')}
         </a>
         <a
           href="#skills"
@@ -207,18 +217,17 @@ const Header = () => {
             fontWeight: activeLink === "#skills" ? "500" : "300",
           }}
         >
-          Skills
+          {t('skills')}
         </a>
       </NavLinks>
 
       <RightContent>
-        <Icon>
-          <FiMoon />
-        </Icon>
-        <Button>Resume</Button>
+        <a href={resumeFile} target="_blank" rel="noopener noreferrer" style={{ textDecoration: 'none' }}>
+          <Button>{t('resume')}</Button>
+        </a>
         <FlagSelect
           options={languageOptions}
-          value={languageOptions.find(option => option.value === language)}
+          value={languageOptions.find(option => option.value === selectedLanguage)}
           onChange={handleLanguageChange}
           isSearchable={false}
           classNamePrefix="react-select"
