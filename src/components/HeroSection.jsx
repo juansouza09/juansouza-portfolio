@@ -2,6 +2,7 @@
 import React from 'react';
 import styled from 'styled-components';
 import { FaGithub, FaLinkedin, FaInstagram } from 'react-icons/fa';
+import { useTranslation } from 'react-i18next';
 
 const HeroContainer = styled.section`
   display: flex;
@@ -110,18 +111,20 @@ const ProfileImage = styled.img`
 `;
 
 const HeroSection = () => {
+  const { t } = useTranslation();
+
   return (
     <HeroContainer>
       <TextContainer>
         <Subtitle>
           <Line />
-          <SubtitleText>MY NAME IS</SubtitleText>
+          <SubtitleText>{t('myNameIs')}</SubtitleText>
         </Subtitle>
         <Name>
           Juan <HighlightedName>Souza.</HighlightedName>
         </Name>
         <Description>
-          Creative software engineer with more than +3 years of experience in enterprise companies and startups. Proficient in Flutter, Android Kotlin and Express.js. Passionate about UI/UX.
+          {t('description')}
         </Description>
         <SocialMedia>
           <a href="https://github.com/juansouza09" target="_blank" rel="noopener noreferrer">
