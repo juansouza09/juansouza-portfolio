@@ -38,7 +38,7 @@ const Line = styled.span`
 
 const SubtitleText = styled.span`
   font-size: 14px;
-  letter-spacing: 2px;
+  letter-spacing: 4px;
   color: #656D72;
   font-family: 'Inter', sans-serif;
   font-weight: 500; /* Inter Medium */
