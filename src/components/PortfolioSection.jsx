@@ -8,9 +8,10 @@ const PortfolioContainer = styled.section`
   align-items: center;
   text-align: center;
   padding: 60px 20px;
-  width: 100%;
-  background-color: #222;
+  width: 100vw;
   color: #fff;
+  overflow-x: hidden;
+  box-sizing: border-box;
 `;
 
 const PortfolioGrid = styled.div`

@@ -7,10 +7,10 @@ const ServicesContainer = styled.section`
   flex-direction: column;
   align-items: center;
   text-align: center;
-  padding: 60px 20px;
-  width: 100%;
-  background-color: #1a1a1a;
+  width: 100vw;
   color: #fff;
+  overflow-x: hidden;
+  box-sizing: border-box;
 `;
 
 const ServicesGrid = styled.div`

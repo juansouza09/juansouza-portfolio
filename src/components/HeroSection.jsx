@@ -8,7 +8,7 @@ const HeroContainer = styled.section`
   align-items: center;
   justify-content: space-between;
   width: 100vw;
-  height: 100vh;
+  height: 85vh;
   padding: 0 20px;
   background-color: #1E1E1E;
   color: #fff;
