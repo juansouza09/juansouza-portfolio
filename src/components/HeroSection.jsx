@@ -9,9 +9,11 @@ const HeroContainer = styled.section`
   justify-content: space-between;
   width: 100vw;
   height: 85vh;
-  padding: 0 20px;
   background-color: #1E1E1E;
   color: #fff;
+  padding-left: 10%; /* Ajuste o valor conforme necessário */
+  padding-right: 10%; /* Ajuste o valor conforme necessário */
+  box-sizing: border-box;
   font-family: 'Inter', sans-serif;
   overflow-x: hidden;
   box-sizing: border-box;
@@ -19,7 +21,6 @@ const HeroContainer = styled.section`
 
 const TextContainer = styled.div`
   max-width: 500px;
-  margin-left: 260px;
   margin-right: 20px;
 `;
 
@@ -88,7 +89,6 @@ const ImageContainer = styled.div`
   display: flex;
   align-items: center;
   justify-content: center;
-  margin-right: 260px;
   margin-left: 40px;
 `;
 
@@ -124,13 +124,13 @@ const HeroSection = () => {
           Creative software engineer with more than +3 years of experience in enterprise companies and startups. Proficient in Flutter, Android Kotlin and Express.js. Passionate about UI/UX.
         </Description>
         <SocialMedia>
-          <a href="https://github.com" target="_blank" rel="noopener noreferrer">
+          <a href="https://github.com/juansouza09" target="_blank" rel="noopener noreferrer">
             <FaGithub />
           </a>
-          <a href="https://linkedin.com" target="_blank" rel="noopener noreferrer">
+          <a href="https://www.linkedin.com/in/juansouza9/" target="_blank" rel="noopener noreferrer">
             <FaLinkedin />
           </a>
-          <a href="https://instagram.com" target="_blank" rel="noopener noreferrer">
+          <a href="https://www.instagram.com/iamjuansouzaa/" target="_blank" rel="noopener noreferrer">
             <FaInstagram />
           </a>
         </SocialMedia>

@@ -11,7 +11,10 @@ const HeaderContainer = styled.header`
   justify-content: space-between;
   align-items: center;
   width: 100%;
-  padding: 20px;
+  padding-top: 20px; /* Ajuste o valor conforme necessário */
+  padding-left: 8%; /* Ajuste o valor conforme necessário */
+  padding-right: 8%; /* Ajuste o valor conforme necessário */
+  box-sizing: border-box;
   height: auto;
   background-color: #1e1e1e;
   font-family: 'Inter', sans-serif;
