@@ -198,7 +198,7 @@ const Header = () => {
             fontWeight: activeLink === "#portfolio" ? "500" : "300",
           }}
         >
-          {t('portfolio')}
+          {t('portfolio-navbar')}
         </a>
         <a
           href="#experience"

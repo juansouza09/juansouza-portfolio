@@ -2,6 +2,7 @@ import React from "react";
 import styled from "styled-components";
 import mobileImg from "../assets/mobile.png";
 import webImg from "../assets/web.png";
+import { useTranslation } from "react-i18next";
 
 const PortfolioContainer = styled.section`
   display: flex;
@@ -23,13 +24,15 @@ const PortfolioGrid = styled.div`
   width: 100%;
 `;
 
-const PortfolioItem = styled.div`
+const PortfolioItem = styled.a`
   position: relative;
   background-color: #333;
   border-radius: 10px;
   overflow: hidden;
   cursor: pointer;
-  
+  text-decoration: none;
+  color: inherit;
+
   img {
     width: 100%;
     border-radius: 10px 10px 0 0; /* Borda arredondada apenas no topo */
@@ -53,7 +56,7 @@ const Overlay = styled.div`
 
 const ProjectTitle = styled.p`
   font-size: 18px;
-  color: #333;
+  color: #232e35;
   font-weight: 600;
   margin: 0;
 `;
@@ -102,41 +105,53 @@ const TitleText = styled.span`
   font-weight: 800;
 `;
 
+const DescriptionText = styled.span`
+  font-size: 14px;
+  color: #333;
+  font-family: "Inter", sans-serif;
+  font-weight: 500;
+`;
+
 const PortfolioSection = () => {
+  const { t } = useTranslation();
+
   return (
     <PortfolioContainer>
       <Subtitle>
         <Line />
-        <SubtitleText>MY WORKS</SubtitleText>
+        <SubtitleText>{t("portfolio")}</SubtitleText>
       </Subtitle>
-      <TitleText>Featured Portfolios</TitleText>
+      <TitleText>{t("portfolio-subtitle")}</TitleText>
       <PortfolioGrid>
-        <PortfolioItem>
-          <img src={mobileImg} alt="Agency Website" />
+        <PortfolioItem href="https://play.google.com/store/apps/details?id=ai.teachnology.morf&hl=pt_BR&pli=1">
+          <img src={mobileImg} alt="Morf" />
           <Overlay className="overlay">
-            <ProjectTitle>Agency Website</ProjectTitle>
+            <ProjectTitle>{t("project-1-title")}</ProjectTitle>
+            <DescriptionText>{t("project-1-desc")}</DescriptionText>
             <TechTags>
-              <TechTag>WordPress</TechTag>
+              <TechTag>Flutter</TechTag>
               <TechTag>↗</TechTag>
             </TechTags>
           </Overlay>
         </PortfolioItem>
-        <PortfolioItem>
-          <img src={webImg} alt="Dashboard Website" />
+        <PortfolioItem href="https://github.com/juansouza09/LuaStation">
+          <img src={webImg} alt="Lua Station" />
           <Overlay className="overlay">
-            <ProjectTitle>Dashboard Website</ProjectTitle>
+            <ProjectTitle>{t("project-2-title")}</ProjectTitle>
+            <DescriptionText>{t("project-2-desc")}</DescriptionText>
             <TechTags>
-              <TechTag>React</TechTag>
+              <TechTag>Android Kotlin</TechTag>
               <TechTag>↗</TechTag>
             </TechTags>
           </Overlay>
         </PortfolioItem>
-        <PortfolioItem>
-          <img src={mobileImg} alt="Support Center Website" />
+        <PortfolioItem href="https://github.com/juansouza09/coffee-shop-flutter">
+          <img src={mobileImg} alt="Coffee Shop UI" />
           <Overlay className="overlay">
-            <ProjectTitle>Support Center Website</ProjectTitle>
+            <ProjectTitle>{t("project-3-title")}</ProjectTitle>
+            <DescriptionText>{t("project-3-desc")}</DescriptionText>
             <TechTags>
-              <TechTag>PHP</TechTag>
+              <TechTag>Flutter</TechTag>
               <TechTag>↗</TechTag>
             </TechTags>
           </Overlay>
