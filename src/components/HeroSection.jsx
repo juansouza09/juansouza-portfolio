@@ -1,8 +1,9 @@
 // src/components/HeroSection.jsx
-import React from 'react';
-import styled from 'styled-components';
-import { FaGithub, FaLinkedin, FaInstagram } from 'react-icons/fa';
-import { useTranslation } from 'react-i18next';
+import React from "react";
+import styled from "styled-components";
+import { FaGithub, FaLinkedin, FaInstagram } from "react-icons/fa";
+import { useTranslation } from "react-i18next";
+import image from "../assets/juan-image.jpeg";
 
 const HeroContainer = styled.section`
   display: flex;
@@ -10,12 +11,12 @@ const HeroContainer = styled.section`
   justify-content: space-between;
   width: 100vw;
   height: 85vh;
-  background-color: #1E1E1E;
+  background-color: #1e1e1e;
   color: #fff;
   padding-left: 10%; /* Ajuste o valor conforme necessário */
   padding-right: 10%; /* Ajuste o valor conforme necessário */
   box-sizing: border-box;
-  font-family: 'Inter', sans-serif;
+  font-family: "Inter", sans-serif;
   overflow-x: hidden;
   box-sizing: border-box;
 `;
@@ -35,14 +36,14 @@ const Subtitle = styled.div`
 const Line = styled.span`
   width: 15px; /* Largura do traço */
   height: 1px;
-  background-color: #D9D9D9;
+  background-color: #d9d9d9;
 `;
 
 const SubtitleText = styled.span`
   font-size: 14px;
   letter-spacing: 4px;
-  color: #656D72;
-  font-family: 'Inter', sans-serif;
+  color: #656d72;
+  font-family: "Inter", sans-serif;
   font-weight: 500; /* Inter Medium */
 `;
 
@@ -53,11 +54,11 @@ const Name = styled.h1`
   font-weight: 700;
   display: flex;
   gap: 8px;
-  font-family: 'Plus Jakarta Sans', sans-serif;
+  font-family: "Plus Jakarta Sans", sans-serif;
 `;
 
 const HighlightedName = styled.span`
-  color: #7E74F1;
+  color: #7e74f1;
 `;
 
 const Description = styled.p`
@@ -78,7 +79,7 @@ const SocialMedia = styled.div`
     transition: color 0.3s;
 
     &:hover {
-      color: #7E74F1;
+      color: #7e74f1;
     }
   }
 `;
@@ -97,7 +98,7 @@ const BackgroundShape = styled.div`
   position: absolute;
   width: 340px;
   height: 420px;
-  background-color: #7E74F1;
+  background-color: #7e74f1;
   transform: rotate(-10deg);
   border-radius: 20px;
 `;
@@ -118,29 +119,39 @@ const HeroSection = () => {
       <TextContainer>
         <Subtitle>
           <Line />
-          <SubtitleText>{t('myNameIs')}</SubtitleText>
+          <SubtitleText>{t("myNameIs")}</SubtitleText>
         </Subtitle>
         <Name>
           Juan <HighlightedName>Souza.</HighlightedName>
         </Name>
-        <Description>
-          {t('description')}
-        </Description>
+        <Description>{t("description")}</Description>
         <SocialMedia>
-          <a href="https://github.com/juansouza09" target="_blank" rel="noopener noreferrer">
+          <a
+            href="https://github.com/juansouza09"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
             <FaGithub />
           </a>
-          <a href="https://www.linkedin.com/in/juansouza9/" target="_blank" rel="noopener noreferrer">
+          <a
+            href="https://www.linkedin.com/in/juansouza9/"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
             <FaLinkedin />
           </a>
-          <a href="https://www.instagram.com/iamjuansouzaa/" target="_blank" rel="noopener noreferrer">
+          <a
+            href="https://www.instagram.com/iamjuansouzaa/"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
             <FaInstagram />
           </a>
         </SocialMedia>
       </TextContainer>
       <ImageContainer>
         <BackgroundShape />
-        <ProfileImage src="/src/assets/juan-image.jpeg" alt="Juan Souza" />
+        <ProfileImage src={image} alt="Juan Souza" />
       </ImageContainer>
     </HeroContainer>
   );

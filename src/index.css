@@ -4,7 +4,6 @@
   font-weight: 400;
 
   color-scheme: light dark;
-  color: rgba(255, 255, 255, 0.87);
   background-color: #1E1E1E;
 
   font-synthesis: none;
@@ -27,6 +26,7 @@ body {
   display: flex;
   place-items: center;
   width: 100vw;
+  background-color: #1E1E1E;
   min-height: 100vh;
 }
 

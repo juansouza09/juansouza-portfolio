@@ -1,5 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
+import mobileImg from '../assets/mobile.png'
+import webImg from '../assets/web.png'
 
 const ServicesContainer = styled.section`
   display: flex;
@@ -92,12 +94,12 @@ const Services = () => {
       <h2>Specialized in</h2>
       <ServicesGrid>
         <ServiceItem>
-          <ServiceImage src="/src/assets/mobile.png" alt="Mobile Apps Icon" />
+          <ServiceImage src={mobileImg} alt="Mobile Apps Icon" />
           <h3>Mobile Apps</h3>
           <p>Building Android and iOS apps with an attractive design and agile performance. From development to publication in the stores.</p>
         </ServiceItem>
         <ServiceItem>
-          <ServiceImage src="/src/assets/web.png" alt="Web Backend & Frontend Icon" />
+          <ServiceImage src={webImg} alt="Web Backend & Frontend Icon" />
           <h3>Web Backend & Frontend</h3>
           <p>Building modern web systems with secure backends and dynamic interfaces, guaranteeing performance and scalability.</p>
         </ServiceItem>
