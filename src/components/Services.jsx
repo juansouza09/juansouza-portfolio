@@ -84,6 +84,13 @@ const SubtitleText = styled.span`
   font-weight: 500;
 `;
 
+const TitleText = styled.span`
+  font-size: 26px;
+  color: #ffffff;
+  font-family: "Plus Jakarta Sans", sans-serif;
+  font-weight: 800;
+`;
+
 const Services = () => {
   return (
     <ServicesContainer>
@@ -91,7 +98,7 @@ const Services = () => {
         <Line />
         <SubtitleText>SERVICES</SubtitleText>
       </Subtitle>
-      <h2>Specialized in</h2>
+      <TitleText>Specialized in</TitleText>
       <ServicesGrid>
         <ServiceItem>
           <ServiceImage src={mobileImg} alt="Mobile Apps Icon" />
