@@ -133,10 +133,18 @@ const SubtitleText = styled.span`
   font-weight: 500;
 `;
 
+const TitleText = styled.span`
+  font-size: 26px;
+  color: #ffffff;
+  font-family: "Plus Jakarta Sans", sans-serif;
+  font-weight: 800;
+  padding-bottom: 40px;
+`;
+
 const ExperienceSection = () => {
   const { t } = useTranslation();
 
-  const [selectedCompany, setSelectedCompany] = useState("Questione.ai");
+  const [selectedCompany, setSelectedCompany] = useState("Questione");
   const experiences = t("experiences", { returnObjects: true });
   const selectedExperience = experiences[selectedCompany];
 
@@ -147,7 +155,7 @@ const ExperienceSection = () => {
           <Line />
           <SubtitleText>{t("careerPath")}</SubtitleText>
         </Subtitle>
-        <h1>{t("workExperiences")}</h1>
+        <TitleText>{t("workExperiences")}</TitleText>
         <CompanyList>
           {Object.keys(experiences).map((company) => (
             <CompanyItem

@@ -23,29 +23,39 @@
   "careerPath": "CARREIRA PROFISSIONAL",
   "workExperiences": "Experiências de Trabalho",
   "experiences": {
-    "Questione.ai": {
-      "title": "Front-end Developer",
-      "company": "Apple Inc",
-      "location": "California, United States",
-      "period": "Nov 2020 - Present · Full-time",
-      "tags": ["Swift", "Go"],
+    "Questione": {
+      "title": "Engenheiro de Software Jr.",
+      "company": "Questione.ai",
+      "location": "São Paulo, Brazil",
+      "period": "Jun 2023 - Atual · Tempo Integral",
+      "tags": ["Flutter", "Express.js", "JavaScript"],
       "responsibilities": [
-        "Improving overall website performance for mobile users.",
-        "Collaborate with back-end developers and web designers to improve usability.",
-        "Add voice search feature for mobile app.",
-        "Developing an admin panel to manage contents, users, products and more."
+        "Responsável pelo desenvolvimento do Morf, um assistente de estudos integrado à IA generativa da OpenAI, utilizando Flutter.",
+        "Tecnologias utilizadas: Bloc, WebSocket, Firebase Auth, Storage, Firestore, Remote Config, Analytics, Codemagic CI/CD.",
+        "Aplicativo disponível na Play Store e App Store, com uma base de mais de 1300 usuários ativos.",
+        "Responsável pelo desenvolvimento de um CRM com frontend em HTML, CSS, JavaScript e backend em Node.js com Express, incluindo autenticação via JWT."
       ]
     },
-    "Microsoft": {
-      "title": "Software Engineer",
-      "company": "Microsoft",
-      "location": "Washington, United States",
-      "period": "Jan 2019 - Oct 2020 · Full-time",
-      "tags": ["C#", ".NET"],
+    "CI&T": {
+      "title": "Menor Aprendiz - Desenvolvedor Android",
+      "company": "CI&T",
+      "location": "São Paulo, Brazil",
+      "period": "Jan 2022 - Mar 2023 · Meio Período",
+      "tags": ["Android Kotlin", "MVVM", "GitHub CI/CD"],
       "responsibilities": [
-        "Developed scalable web applications for enterprise clients.",
-        "Enhanced user experience by improving performance and accessibility.",
-        "Built reusable components and front-end libraries."
+        "Desenvolvimento de features em um aplicativo modularizado utilizando arquitetura MVVM com Kotlin.",
+        "Utilização de GitHub CI/CD para integração contínua e entrega de versões."
+      ]
+    },
+    "Dextra": {
+      "title": "Menor Aprendiz de Tecnologia",
+      "company": "Dextra",
+      "location": "São Paulo, Brazil",
+      "period": "Set 2021 - Dez 2021 · Meio Período",
+      "tags": ["Flutter Web", "Android Kotlin"],
+      "responsibilities": [
+        "Participação em um desafio utilizando Flutter Web.",
+        "Início de uma trilha em desenvolvimento Android utilizando Kotlin."
       ]
     }
   }

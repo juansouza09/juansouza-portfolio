@@ -23,29 +23,39 @@
   "careerPath": "CAREER PATH",
   "workExperiences": "Work Experiences",
   "experiences": {
-    "Questione.ai": {
-      "title": "Front-end Developer",
-      "company": "Apple Inc",
-      "location": "California, United States",
-      "period": "Nov 2020 - Present · Full-time",
-      "tags": ["Swift", "Go"],
+    "Questione": {
+      "title": "Junior Software Engineer",
+      "company": "Questione.ai",
+      "location": "São Paulo, Brazil",
+      "period": "Jun 2023 - Present · Full-time",
+      "tags": ["Flutter", "Express.js", "JavaScript"],
       "responsibilities": [
-        "Improving overall website performance for mobile users.",
-        "Collaborate with back-end developers and web designers to improve usability.",
-        "Add voice search feature for mobile app.",
-        "Developing an admin panel to manage contents, users, products and more."
+        "Responsible for the development of Morf, a study assistant integrated with OpenAI's generative AI, using Flutter.",
+        "Technologies used: Bloc, WebSocket, Firebase Auth, Storage, Firestore, Remote Config, Analytics, Codemagic CI/CD.",
+        "App available on the Play Store and App Store, with a user base of over 1,300 active users.",
+        "Developed a CRM with frontend using HTML, CSS, JavaScript, and backend in Node.js with Express, including JWT-based authentication."
       ]
     },
-    "Microsoft": {
-      "title": "Software Engineer",
-      "company": "Microsoft",
-      "location": "Washington, United States",
-      "period": "Jan 2019 - Oct 2020 · Full-time",
-      "tags": ["C#", ".NET"],
+    "CI&T": {
+      "title": "Android Developer - Intern",
+      "company": "CI&T",
+      "location": "São Paulo, Brazil",
+      "period": "Jan 2022 - Mar 2023 · Part-time",
+      "tags": ["Android Kotlin", "MVVM", "GitHub CI/CD"],
       "responsibilities": [
-        "Developed scalable web applications for enterprise clients.",
-        "Enhanced user experience by improving performance and accessibility.",
-        "Built reusable components and front-end libraries."
+        "Developed features in a modularized application using MVVM architecture with Kotlin.",
+        "Utilized GitHub CI/CD for continuous integration and delivery."
+      ]
+    },
+    "Dextra": {
+      "title": "Technology Intern",
+      "company": "Dextra",
+      "location": "São Paulo, Brazil",
+      "period": "Sep 2021 - Dec 2021 · Part-time",
+      "tags": ["Flutter Web", "Android Kotlin"],
+      "responsibilities": [
+        "Participated in a challenge using Flutter Web.",
+        "Started a development track in Android using Kotlin."
       ]
     }
   }
