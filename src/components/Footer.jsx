@@ -12,14 +12,15 @@ const FooterContainer = styled.footer`
   width: 100vw;
   overflow-x: hidden;
   box-sizing: border-box;
-  color: #fff;
+  color: #656D72;
+  background-color: #fff;
 `;
 
 const SocialIcons = styled.div`
   margin: 10px 0;
 
   a {
-    color: #fff;
+    color: #656D72;
     margin: 0 10px;
     font-size: 20px;
 
