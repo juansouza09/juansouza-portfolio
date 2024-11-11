@@ -34,8 +34,8 @@ const Footer = () => {
     <FooterContainer>
       <p>© 2024 Juan Souza</p>
       <SocialIcons>
-        <a href="https://github.com"><FaGithub /></a>
-        <a href="https://linkedin.com"><FaLinkedin /></a>
+        <a href="https://github.com/juansouza09"><FaGithub /></a>
+        <a href="https://www.linkedin.com/in/juansouza9/"><FaLinkedin /></a>
       </SocialIcons>
     </FooterContainer>
   );

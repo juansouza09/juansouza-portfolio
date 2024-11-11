@@ -140,13 +140,6 @@ const HeroSection = () => {
           >
             <FaLinkedin />
           </a>
-          <a
-            href="https://www.instagram.com/iamjuansouzaa/"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <FaInstagram />
-          </a>
         </SocialMedia>
       </TextContainer>
       <ImageContainer>
