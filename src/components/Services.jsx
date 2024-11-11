@@ -1,7 +1,8 @@
-import React from 'react';
-import styled from 'styled-components';
-import mobileImg from '../assets/mobile.png'
-import webImg from '../assets/web.png'
+import React from "react";
+import styled from "styled-components";
+import mobileImg from "../assets/mobile.png";
+import webImg from "../assets/web.png";
+import { useTranslation } from "react-i18next";
 
 const ServicesContainer = styled.section`
   display: flex;
@@ -48,7 +49,7 @@ const ServiceItem = styled.div`
   }
 
   p {
-    color: #D9D9D9;
+    color: #d9d9d9;
     font-size: 14px;
     text-align: center;
   }
@@ -73,14 +74,14 @@ const Subtitle = styled.div`
 const Line = styled.span`
   width: 15px;
   height: 1px;
-  background-color: #D9D9D9;
+  background-color: #d9d9d9;
 `;
 
 const SubtitleText = styled.span`
   font-size: 14px;
   letter-spacing: 4px;
-  color: #656D72;
-  font-family: 'Inter', sans-serif;
+  color: #656d72;
+  font-family: "Inter", sans-serif;
   font-weight: 500;
 `;
 
@@ -92,23 +93,27 @@ const TitleText = styled.span`
 `;
 
 const Services = () => {
+  const { t } = useTranslation();
+
   return (
     <ServicesContainer>
       <Subtitle>
         <Line />
-        <SubtitleText>SERVICES</SubtitleText>
+        <SubtitleText>{t("services")}</SubtitleText>
       </Subtitle>
-      <TitleText>Specialized in</TitleText>
+      <TitleText>{t("services-subtitle")}</TitleText>
       <ServicesGrid>
         <ServiceItem>
           <ServiceImage src={mobileImg} alt="Mobile Apps Icon" />
-          <h3>Mobile Apps</h3>
-          <p>Building Android and iOS apps with an attractive design and agile performance. From development to publication in the stores.</p>
+          <h3>{t("service-1-title")}</h3>
+          <p>{t("service-1-desc")}</p>
         </ServiceItem>
         <ServiceItem>
           <ServiceImage src={webImg} alt="Web Backend & Frontend Icon" />
-          <h3>Web Backend & Frontend</h3>
-          <p>Building modern web systems with secure backends and dynamic interfaces, guaranteeing performance and scalability.</p>
+          <h3>{t("service-2-title")}</h3>
+          <p>
+          {t("service-1-desc")}
+          </p>
         </ServiceItem>
       </ServicesGrid>
     </ServicesContainer>

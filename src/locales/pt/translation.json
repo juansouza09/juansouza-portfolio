@@ -1,6 +1,12 @@
 {
     "myNameIs": "MEU NOME É",
-    "services": "Serviços",
+    "services-navbar": "Serviços",
+    "services": "SERVIÇOS",
+    "services-subtitle": "Especializado em",
+    "service-1-title": "Aplicativos móveis",
+    "service-1-desc": "Construção de aplicações Android e iOS com um design atrativo e uma performance ágil. Do desenvolvimento à publicação nas lojas.",
+    "service-2-title": "Web Backend & Frontend",
+    "service-2-desc": "Construir sistemas Web modernos com backends seguros e interfaces dinâmicas, garantindo o desempenho e a escalabilidade.",
     "portfolio": "Portfólio",
     "experience": "Experiência",
     "skills": "Habilidades",

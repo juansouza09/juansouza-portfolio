@@ -1,7 +1,6 @@
-// src/components/HeroSection.jsx
 import React from "react";
 import styled from "styled-components";
-import { FaGithub, FaLinkedin, FaInstagram } from "react-icons/fa";
+import { FaGithub, FaLinkedin } from "react-icons/fa";
 import { useTranslation } from "react-i18next";
 import image from "../assets/juan-image.jpeg";
 

@@ -1,4 +1,3 @@
-// src/components/Header.jsx
 import React, { useState, useEffect } from 'react';
 import styled from 'styled-components';
 import { HiOutlineMenuAlt3 } from 'react-icons/hi';
@@ -190,7 +189,7 @@ const Header = () => {
             fontWeight: activeLink === "#services" ? "500" : "300",
           }}
         >
-          {t('services')}
+          {t('services-navbar')}
         </a>
         <a
           href="#portfolio"
