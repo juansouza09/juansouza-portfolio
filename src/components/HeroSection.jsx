@@ -10,7 +10,7 @@ const HeroContainer = styled.section`
   justify-content: space-between;
   width: 100vw;
   height: 85vh;
-  background-color: #1e1e1e;
+  background-color: #121212;
   color: #fff;
   padding-left: 10%; /* Ajuste o valor conforme necessário */
   padding-right: 10%; /* Ajuste o valor conforme necessário */

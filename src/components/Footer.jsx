@@ -8,19 +8,18 @@ const FooterContainer = styled.footer`
   flex-direction: column;
   align-items: center;
   text-align: center;
-  padding: 20px;
   width: 100vw;
   overflow-x: hidden;
   box-sizing: border-box;
-  color: #656D72;
-  background-color: #fff;
+  color: #fff;
+  background-color: #1e1e1e;
 `;
 
 const SocialIcons = styled.div`
   margin: 10px 0;
 
   a {
-    color: #656D72;
+    color: #fff;
     margin: 0 10px;
     font-size: 20px;
 
