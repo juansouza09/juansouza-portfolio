@@ -28,7 +28,7 @@
       "company": "Questione.ai",
       "location": "São Paulo, Brazil",
       "period": "Jun 2023 - Present · Full-time",
-      "tags": ["Flutter", "Express.js", "JavaScript"],
+      "tags": ["Flutter", "React.js", "Express.js", "JavaScript"],
       "responsibilities": [
         "Responsible for the development of Morf, a study assistant integrated with OpenAI's generative AI, using Flutter.",
         "Technologies used: Bloc, WebSocket, Firebase Auth, Storage, Firestore, Remote Config, Analytics, Codemagic CI/CD.",
