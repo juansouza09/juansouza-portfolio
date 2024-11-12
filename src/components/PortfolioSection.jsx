@@ -127,7 +127,11 @@ const PortfolioSection = () => {
       </Subtitle>
       <TitleText>{t("portfolio-subtitle")}</TitleText>
       <PortfolioGrid>
-        <PortfolioItem href="https://play.google.com/store/apps/details?id=ai.teachnology.morf&hl=pt_BR&pli=1">
+        <PortfolioItem
+          href="https://play.google.com/store/apps/details?id=ai.teachnology.morf&hl=pt_BR&pli=1"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
           <img src={morfImg} alt="Morf" />
           <Overlay className="overlay">
             <ProjectTitle>{t("project-1-title")}</ProjectTitle>
@@ -138,7 +142,11 @@ const PortfolioSection = () => {
             </TechTags>
           </Overlay>
         </PortfolioItem>
-        <PortfolioItem href="https://github.com/juansouza09/LuaStation">
+        <PortfolioItem
+          href="https://github.com/juansouza09/LuaStation"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
           <img src={luaStationImg} alt="Lua Station" />
           <Overlay className="overlay">
             <ProjectTitle>{t("project-2-title")}</ProjectTitle>
@@ -149,7 +157,11 @@ const PortfolioSection = () => {
             </TechTags>
           </Overlay>
         </PortfolioItem>
-        <PortfolioItem href="https://github.com/juansouza09/coffee-shop-flutter">
+        <PortfolioItem
+          href="https://github.com/juansouza09/coffee-shop-flutter"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
           <img src={coffeeImg} alt="Coffee Shop UI" />
           <Overlay className="overlay">
             <ProjectTitle>{t("project-3-title")}</ProjectTitle>
