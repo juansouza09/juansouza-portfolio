@@ -21,15 +21,6 @@ const Sidebar = styled.div`
   width: 30%;
 `;
 
-const SidebarTitle = styled.h3`
-  font-size: 14px;
-  letter-spacing: 2px;
-  color: #656d72;
-  font-family: "Inter", sans-serif;
-  font-weight: 500;
-  margin-bottom: 20px;
-`;
-
 const CompanyList = styled.ul`
   list-style: none;
   padding: 0;

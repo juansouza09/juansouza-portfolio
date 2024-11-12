@@ -1,7 +1,8 @@
 import React from "react";
 import styled from "styled-components";
-import mobileImg from "../assets/mobile.png";
-import webImg from "../assets/web.png";
+import luaStationImg from "../assets/ls-image.jpg";
+import morfImg from "../assets/morf-image.jpg";
+import coffeeImg from "../assets/coffee-shop-image.PNG";
 import { useTranslation } from "react-i18next";
 
 const PortfolioContainer = styled.section`
@@ -28,6 +29,7 @@ const PortfolioItem = styled.a`
   position: relative;
   background-color: #333;
   border-radius: 10px;
+  width: 100%;
   overflow: hidden;
   cursor: pointer;
   text-decoration: none;
@@ -35,6 +37,8 @@ const PortfolioItem = styled.a`
 
   img {
     width: 100%;
+    max-height: 500px; /* Defina uma altura padrão */
+    object-fit: cover;
     border-radius: 10px 10px 0 0; /* Borda arredondada apenas no topo */
   }
 
@@ -124,7 +128,7 @@ const PortfolioSection = () => {
       <TitleText>{t("portfolio-subtitle")}</TitleText>
       <PortfolioGrid>
         <PortfolioItem href="https://play.google.com/store/apps/details?id=ai.teachnology.morf&hl=pt_BR&pli=1">
-          <img src={mobileImg} alt="Morf" />
+          <img src={morfImg} alt="Morf" />
           <Overlay className="overlay">
             <ProjectTitle>{t("project-1-title")}</ProjectTitle>
             <DescriptionText>{t("project-1-desc")}</DescriptionText>
@@ -135,7 +139,7 @@ const PortfolioSection = () => {
           </Overlay>
         </PortfolioItem>
         <PortfolioItem href="https://github.com/juansouza09/LuaStation">
-          <img src={webImg} alt="Lua Station" />
+          <img src={luaStationImg} alt="Lua Station" />
           <Overlay className="overlay">
             <ProjectTitle>{t("project-2-title")}</ProjectTitle>
             <DescriptionText>{t("project-2-desc")}</DescriptionText>
@@ -146,7 +150,7 @@ const PortfolioSection = () => {
           </Overlay>
         </PortfolioItem>
         <PortfolioItem href="https://github.com/juansouza09/coffee-shop-flutter">
-          <img src={mobileImg} alt="Coffee Shop UI" />
+          <img src={coffeeImg} alt="Coffee Shop UI" />
           <Overlay className="overlay">
             <ProjectTitle>{t("project-3-title")}</ProjectTitle>
             <DescriptionText>{t("project-3-desc")}</DescriptionText>
