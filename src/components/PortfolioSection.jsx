@@ -4,14 +4,13 @@ import luaStationImg from "../assets/ls-image.jpg";
 import morfImg from "../assets/morf-image.jpg";
 import coffeeImg from "../assets/coffee-shop-image.PNG";
 import { useTranslation } from "react-i18next";
+import { media } from "../styles/media";
 
 const PortfolioContainer = styled.section`
   display: flex;
   flex-direction: column;
-  padding: 60px 20px;
+  padding: 60px 10%;
   width: 100vw;
-  padding-left: 10%;
-  padding-right: 10%;
   color: #fff;
   overflow-x: hidden;
   box-sizing: border-box;
@@ -23,6 +22,15 @@ const PortfolioGrid = styled.div`
   margin-top: 30px;
   gap: 20px;
   width: 100%;
+
+  ${media.tablet`
+    flex-wrap: wrap;
+  `}
+
+  ${media.mobile`
+    flex-direction: column;
+    align-items: center;
+  `}
 `;
 
 const PortfolioItem = styled.a`
