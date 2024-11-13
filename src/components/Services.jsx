@@ -3,6 +3,7 @@ import styled from "styled-components";
 import mobileImg from "../assets/mobile.png";
 import webImg from "../assets/web.png";
 import { useTranslation } from "react-i18next";
+import { media } from "../styles/media";
 
 const ServicesContainer = styled.section`
   display: flex;
@@ -14,6 +15,9 @@ const ServicesContainer = styled.section`
   padding: 10px;
   overflow-x: hidden;
   box-sizing: border-box;
+  ${media.mobile`
+  margin-top: 30px;
+  `}
 `;
 
 const ServicesGrid = styled.div`
@@ -22,7 +26,11 @@ const ServicesGrid = styled.div`
   justify-content: center;
   margin-top: 30px;
   gap: 40px;
-  width: 40%; /* Ajuste de largura para dar mais espaço */
+  width: 40%;
+
+  ${media.mobile`
+  width: 90%;
+  `}
 `;
 
 const ServiceItem = styled.div`
@@ -111,9 +119,7 @@ const Services = () => {
         <ServiceItem>
           <ServiceImage src={webImg} alt="Web Backend & Frontend Icon" />
           <h3>{t("service-2-title")}</h3>
-          <p>
-          {t("service-1-desc")}
-          </p>
+          <p>{t("service-1-desc")}</p>
         </ServiceItem>
       </ServicesGrid>
     </ServicesContainer>
