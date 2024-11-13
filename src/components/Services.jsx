@@ -119,7 +119,7 @@ const Services = () => {
         <ServiceItem>
           <ServiceImage src={webImg} alt="Web Backend & Frontend Icon" />
           <h3>{t("service-2-title")}</h3>
-          <p>{t("service-1-desc")}</p>
+          <p>{t("service-2-desc")}</p>
         </ServiceItem>
       </ServicesGrid>
     </ServicesContainer>
