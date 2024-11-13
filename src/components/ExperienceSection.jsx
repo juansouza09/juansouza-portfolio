@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import styled from "styled-components";
 import { useTranslation } from "react-i18next";
+import { media } from "../styles/media";
 
 const WorkContainer = styled.section`
   display: flex;
@@ -13,18 +14,38 @@ const WorkContainer = styled.section`
   overflow-x: hidden;
   box-sizing: border-box;
   background-color: #121212;
+  ${media.tablet`
+  flex-direction: column;
+  padding: 40px 5%;
+`}
+
+  ${media.mobile`
+  flex-direction: column;
+  padding: 20px 5%;
+  gap: 20px;
+`}
 `;
 
 const Sidebar = styled.div`
   display: flex;
   flex-direction: column;
   width: 30%;
+  ${media.tablet`
+    width: 100%;
+    align-items: center;
+  `}
 `;
 
 const CompanyList = styled.ul`
   list-style: none;
   padding: 0;
   margin: 0;
+  ${media.mobile`
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 10px;
+  `}
 `;
 
 const CompanyItem = styled.li`
@@ -43,11 +64,27 @@ const CompanyItem = styled.li`
     background-color: #333;
     color: #fff;
   }
+
+  ${media.mobile`
+    font-size: 16px;
+    padding: 8px;
+    text-align: center;
+  `}
 `;
 
 const Content = styled.div`
   width: 70%;
   padding-left: 40px;
+
+  ${media.tablet`
+    width: 100%;
+    padding-left: 0;
+  `}
+
+  ${media.mobile`
+    width: 100%;
+    padding-left: 0;
+  `}
 `;
 
 const JobTitle = styled.h2`
@@ -55,24 +92,40 @@ const JobTitle = styled.h2`
   color: #ffffff;
   font-family: "Plus Jakarta Sans", sans-serif;
   font-weight: 800;
+
+  ${media.mobile`
+    font-size: 20px;
+    text-align: center;
+  `}
 `;
 
 const JobLocation = styled.p`
   font-size: 14px;
   color: #888;
   margin-top: 5px;
+  ${media.mobile`
+    text-align: center;
+  `}
 `;
 
 const JobPeriod = styled.p`
   font-size: 14px;
   color: #888;
   margin-top: 5px;
+
+  ${media.mobile`
+    text-align: center;
+  `}
 `;
 
 const JobTags = styled.div`
   display: flex;
   gap: 10px;
   margin-top: 10px;
+
+  ${media.mobile`
+    justify-content: center;
+  `}
 `;
 
 const Tag = styled.span`
@@ -100,6 +153,11 @@ const JobDescription = styled.ul`
       font-weight: bold;
       margin-right: 10px;
     }
+
+    ${media.mobile`
+      text-align: left;
+      font-size: 14px;
+    `}
   }
 `;
 
