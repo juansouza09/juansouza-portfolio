@@ -3,6 +3,7 @@ import styled from "styled-components";
 import { FaGithub, FaLinkedin } from "react-icons/fa";
 import { useTranslation } from "react-i18next";
 import image from "../assets/juan-image.jpeg";
+import { media } from "../styles/media";
 
 const HeroContainer = styled.section`
   display: flex;
@@ -12,17 +13,33 @@ const HeroContainer = styled.section`
   height: 85vh;
   background-color: #121212;
   color: #fff;
-  padding-left: 10%; /* Ajuste o valor conforme necessário */
-  padding-right: 10%; /* Ajuste o valor conforme necessário */
+  padding: 0 10%;
   box-sizing: border-box;
   font-family: "Inter", sans-serif;
   overflow-x: hidden;
   box-sizing: border-box;
+
+  ${media.tablet`
+    flex-direction: column;
+    padding: 0 5%;
+    justify-content: space-around;
+  `}
+
+  ${media.mobile`
+    flex-direction: column;
+    justify-content: space-around;
+    padding: 0 5%;
+    height: 100vh;
+  `}
 `;
 
 const TextContainer = styled.div`
   max-width: 500px;
   margin-right: 20px;
+
+  ${media.mobile`
+    margin: 10px 0px;
+  `}
 `;
 
 const Subtitle = styled.div`
@@ -85,12 +102,20 @@ const SocialMedia = styled.div`
 
 const ImageContainer = styled.div`
   position: relative;
-  width: 340px;
-  height: 420px;
   display: flex;
   align-items: center;
   justify-content: center;
   margin-left: 40px;
+
+  ${media.tablet`
+    margin-left: 0;
+    margin-top: 20px;
+  `}
+
+  ${media.mobile`
+    margin-left: 0;
+    margin-top: 20px;
+  `}
 `;
 
 const BackgroundShape = styled.div`
@@ -100,6 +125,16 @@ const BackgroundShape = styled.div`
   background-color: #7e74f1;
   transform: rotate(-10deg);
   border-radius: 20px;
+
+  ${media.tablet`
+    width: 18rem;
+    height: 24rem;
+  `}
+
+  ${media.mobile`
+    width: 16rem;
+    height: 22rem;
+  `}
 `;
 
 const ProfileImage = styled.img`
@@ -108,6 +143,17 @@ const ProfileImage = styled.img`
   height: 420px;
   border-radius: 20px;
   z-index: 1;
+  object-fit: cover;
+
+  ${media.tablet`
+    width: 18rem;
+    height: 24rem;
+  `}
+
+  ${media.mobile`
+    width: 16rem;
+    height: 22rem;
+  `}
 `;
 
 const HeroSection = () => {
