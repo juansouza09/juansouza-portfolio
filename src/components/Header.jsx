@@ -22,13 +22,9 @@ const HeaderContainer = styled.header`
   position: fixed;
   top: 0;
   z-index: 100;
-  ${media.mobile`
-    padding: 0rem;
-    position: relative;
-  `}
 
-  ${media.tablet`
-    padding: 0rem;
+  ${media.mobile`
+    padding: 0.5rem 1rem;
     position: relative;
   `}
 `;
@@ -111,6 +107,16 @@ const Button = styled.button`
   `}
 `;
 
+const MobileMenuContainer = styled.div`
+  display: none;
+
+  ${media.mobile`
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  `}
+`;
+
 const MobileMenuIcon = styled.div`
   display: none;
   font-size: 24px;
@@ -161,6 +167,38 @@ const FlagSelect = styled(Select)`
   ${media.mobile`
     width: 100px;
   `}
+`;
+
+const FlagSelectMobile = styled(Select)`
+  width: 80px;
+
+  .react-select__control {
+    background-color: transparent;
+    border-color: #fff;
+    min-height: 30px;
+    cursor: pointer;
+
+    &:hover {
+      border-color: #7e74f1;
+    }
+  }
+  .react-select__single-value {
+    color: #fff;
+  }
+  .react-select__menu {
+    background-color: #1e1e1e;
+    z-index: 1000;
+  }
+  .react-select__option {
+    background-color: #1e1e1e;
+    color: #7e74f1;
+    cursor: pointer;
+
+    &:hover {
+      background-color: #7e74f1;
+      color: #fff;
+    }
+  }
 `;
 
 const Header = () => {
@@ -256,9 +294,20 @@ const Header = () => {
         />
       </RightContent>
 
-      <MobileMenuIcon onClick={toggleMenu}>
-        <HiOutlineMenuAlt3 />
-      </MobileMenuIcon>
+      <MobileMenuContainer>
+        <FlagSelectMobile
+          options={languageOptions}
+          value={languageOptions.find(
+            (option) => option.value === selectedLanguage
+          )}
+          onChange={handleLanguageChange}
+          isSearchable={false}
+          classNamePrefix="react-select"
+        />
+        <MobileMenuIcon onClick={toggleMenu}>
+          <HiOutlineMenuAlt3 />
+        </MobileMenuIcon>
+      </MobileMenuContainer>
     </HeaderContainer>
   );
 };
