@@ -443,7 +443,7 @@ In order to be iterable, non-array objects must have a [Symbol.iterator]() metho
   color: #ffffff;
   font-family: "Plus Jakarta Sans", sans-serif;
   font-weight: 800;
-`,ox=()=>{const{t:e}=I4();return S.jsxs(Qy,{children:[S.jsxs(ex,{children:[S.jsx(ax,{}),S.jsx(cx,{children:e("services")})]}),S.jsx(ix,{children:e("services-subtitle")}),S.jsxs(Xy,{children:[S.jsxs(Tc,{children:[S.jsx(Nc,{src:Zy,alt:"Mobile Apps Icon"}),S.jsx("h3",{children:e("service-1-title")}),S.jsx("p",{children:e("service-1-desc")})]}),S.jsxs(Tc,{children:[S.jsx(Nc,{src:Yy,alt:"Web Backend & Frontend Icon"}),S.jsx("h3",{children:e("service-2-title")}),S.jsx("p",{children:e("service-1-desc")})]})]})]})},lx="/juansouza-portfolio/assets/ls-image-2HP4VeoO.jpg",tx="/juansouza-portfolio/assets/morf-image-0XoNSo9b.jpg",nx="/juansouza-portfolio/assets/coffee-shop-image-Bms3PTRS.PNG",rx=T.section`
+`,ox=()=>{const{t:e}=I4();return S.jsxs(Qy,{children:[S.jsxs(ex,{children:[S.jsx(ax,{}),S.jsx(cx,{children:e("services")})]}),S.jsx(ix,{children:e("services-subtitle")}),S.jsxs(Xy,{children:[S.jsxs(Tc,{children:[S.jsx(Nc,{src:Zy,alt:"Mobile Apps Icon"}),S.jsx("h3",{children:e("service-1-title")}),S.jsx("p",{children:e("service-1-desc")})]}),S.jsxs(Tc,{children:[S.jsx(Nc,{src:Yy,alt:"Web Backend & Frontend Icon"}),S.jsx("h3",{children:e("service-2-title")}),S.jsx("p",{children:e("service-2-desc")})]})]})]})},lx="/juansouza-portfolio/assets/ls-image-2HP4VeoO.jpg",tx="/juansouza-portfolio/assets/morf-image-0XoNSo9b.jpg",nx="/juansouza-portfolio/assets/coffee-shop-image-Bms3PTRS.PNG",rx=T.section`
   display: flex;
   flex-direction: column;
   padding: 60px 10%;
