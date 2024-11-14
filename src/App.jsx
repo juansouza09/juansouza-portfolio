@@ -14,13 +14,20 @@ const App = () => {
   return (
     <div>
       <Header />
-      <HeroSection />
-      <Services />
-      <PortfolioSection />
-      <ExperienceSection />
-      <EducationSection />
-      <SkillsSection />
-      <FeedbackSection />
+      <main>
+        <section id="about-me">
+          <HeroSection />
+        </section>
+        <section id="services">
+          <Services />
+        </section>
+        <section id="portfolio">
+          <PortfolioSection />
+        </section>
+        <section id="experience">
+          <ExperienceSection />
+        </section>
+      </main>
       <Footer />
     </div>
   );

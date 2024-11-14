@@ -4,6 +4,7 @@ import { HiOutlineMenuAlt3 } from "react-icons/hi";
 import Select from "react-select";
 import Flag from "react-world-flags";
 import { useTranslation } from "react-i18next";
+import { Link } from "react-scroll"; // Usando Link para scroll suave
 import resumeEN from "../assets/resume-en.pdf";
 import resumePT from "../assets/resume-pt.pdf";
 import { media } from "../styles/media";
@@ -25,7 +26,6 @@ const HeaderContainer = styled.header`
 
   ${media.mobile`
     padding: 0.5rem 1rem;
-    position: relative;
   `}
 `;
 
@@ -34,28 +34,13 @@ const Logo = styled.h1`
   font-weight: 700;
   letter-spacing: 2px;
   color: #fff;
-  margin-left: 50px; /* Margem à esquerda do logo */
+  margin-left: 50px;
 `;
 
 const NavLinks = styled.nav`
   display: flex;
   gap: 40px;
-
-  a {
-    color: #f1f1f1;
-    font-size: 16px;
-    text-decoration: none;
-    transition: color 0.3s;
-    font-family: "Inter", sans-serif;
-
-    /* Estilo para link ativo */
-    font-weight: ${({ isActive }) => (isActive ? "500" : "400")};
-    color: ${({ isActive }) => (isActive ? "#F1F1F1" : "#F1F1F1")};
-
-    &:hover {
-      color: #7e74f1;
-    }
-  }
+  align-items: center;
 
   ${media.mobile`
     flex-direction: column;
@@ -70,11 +55,23 @@ const NavLinks = styled.nav`
   `}
 `;
 
+const NavLinkStyled = styled(Link)`
+  color: ${({ active }) => (active ? "#7e74f1" : "#f1f1f1")};
+  transition: color 0.3s;
+  font-family: "Inter", sans-serif;
+  font-weight: ${({ active }) => (active ? "500" : "400")};
+  font-size: ${({ active }) => (active ? "18px" : "16px")};
+
+  &:hover {
+    color: #7e74f1;
+  }
+`;
+
 const RightContent = styled.div`
   display: flex;
   align-items: center;
   gap: 40px;
-  margin-right: 50px; /* Margem à direita do conteúdo */
+  margin-right: 50px;
 
   ${media.tablet`
     gap: 20px;
@@ -118,15 +115,14 @@ const MobileMenuContainer = styled.div`
 `;
 
 const MobileMenuIcon = styled.div`
-  display: none;
   font-size: 24px;
   cursor: pointer;
   margin: 50px;
 
   ${media.mobile`
-  display: block;
-  margin: 25px;
-`}
+    display: block;
+    margin: 25px;
+  `}
 `;
 
 const FlagSelect = styled(Select)`
@@ -169,46 +165,15 @@ const FlagSelect = styled(Select)`
   `}
 `;
 
-const FlagSelectMobile = styled(Select)`
-  width: 80px;
-
-  .react-select__control {
-    background-color: transparent;
-    border-color: #fff;
-    min-height: 30px;
-    cursor: pointer;
-
-    &:hover {
-      border-color: #7e74f1;
-    }
-  }
-  .react-select__single-value {
-    color: #fff;
-  }
-  .react-select__menu {
-    background-color: #1e1e1e;
-    z-index: 1000;
-  }
-  .react-select__option {
-    background-color: #1e1e1e;
-    color: #7e74f1;
-    cursor: pointer;
-
-    &:hover {
-      background-color: #7e74f1;
-      color: #fff;
-    }
-  }
-`;
-
 const Header = () => {
   const { t, i18n } = useTranslation();
   const [menuOpen, setMenuOpen] = useState(false);
-  const [activeLink, setActiveLink] = useState("#services");
+  const [activeLink, setActiveLink] = useState("about-me");
   const [selectedLanguage, setSelectedLanguage] = useState(i18n.language);
 
   useEffect(() => {
-    setSelectedLanguage(i18n.language); // Define a bandeira inicial ao carregar o site
+    setSelectedLanguage(i18n.language);
+    setActiveLink(window.location.hash.slice(1) || "about-me");
   }, [i18n.language]);
 
   const toggleMenu = () => {
@@ -216,6 +181,7 @@ const Header = () => {
   };
 
   const handleLinkClick = (link) => {
+    setMenuOpen(false);
     setActiveLink(link);
   };
 
@@ -225,8 +191,8 @@ const Header = () => {
   ];
 
   const handleLanguageChange = (selectedOption) => {
-    i18n.changeLanguage(selectedOption.value); // Altera o idioma no i18n
-    setSelectedLanguage(selectedOption.value); // Atualiza a bandeira selecionada
+    i18n.changeLanguage(selectedOption.value);
+    setSelectedLanguage(selectedOption.value);
   };
 
   const resumeFile = i18n.language === "pt" ? resumePT : resumeEN;
@@ -236,41 +202,26 @@ const Header = () => {
       <Logo>J S</Logo>
 
       <NavLinks isOpen={menuOpen}>
+        {["about-me", "services", "portfolio", "experience"].map((section) => (
+          <NavLinkStyled
+            key={section}
+            to={section}
+            smooth={true}
+            duration={800}
+            onClick={() => handleLinkClick(section)}
+            active={activeLink === section}
+          >
+            {t(`${section}-navbar`)}
+          </NavLinkStyled>
+        ))}
+
         <a
-          href="#services"
-          onClick={() => handleLinkClick("#services")}
-          style={{
-            fontWeight: activeLink === "#services" ? "500" : "300",
-          }}
+          href={resumeFile}
+          target="_blank"
+          rel="noopener noreferrer"
+          style={{ textDecoration: "none", display: menuOpen ? "block" : "none" }}
         >
-          {t("services-navbar")}
-        </a>
-        <a
-          href="#portfolio"
-          onClick={() => handleLinkClick("#portfolio")}
-          style={{
-            fontWeight: activeLink === "#portfolio" ? "500" : "300",
-          }}
-        >
-          {t("portfolio-navbar")}
-        </a>
-        <a
-          href="#experience"
-          onClick={() => handleLinkClick("#experience")}
-          style={{
-            fontWeight: activeLink === "#experience" ? "500" : "300",
-          }}
-        >
-          {t("experience")}
-        </a>
-        <a
-          href="#skills"
-          onClick={() => handleLinkClick("#skills")}
-          style={{
-            fontWeight: activeLink === "#skills" ? "500" : "300",
-          }}
-        >
-          {t("skills")}
+          <Button>{t("resume")}</Button>
         </a>
       </NavLinks>
 
@@ -295,7 +246,7 @@ const Header = () => {
       </RightContent>
 
       <MobileMenuContainer>
-        <FlagSelectMobile
+        <FlagSelect
           options={languageOptions}
           value={languageOptions.find(
             (option) => option.value === selectedLanguage
