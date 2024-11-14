@@ -28,7 +28,7 @@ const HeroContainer = styled.section`
     flex-direction: column;
     justify-content: space-around;
     padding: 0 5%;
-    height: 100vh;
+    height: 100%;
   `}
 `;
 
@@ -37,7 +37,7 @@ const TextContainer = styled.div`
   margin-right: 20px;
 
   ${media.mobile`
-    margin: 10px 0px;
+    margin-top: 40%;
   `}
 `;
 
