@@ -31,7 +31,12 @@
       "company": "Questione.ai",
       "location": "São Paulo, Brazil",
       "period": "Jun 2023 - Present · Full-time",
-      "tags": ["Flutter", "React.js", "Express.js", "JavaScript"],
+      "tags": [
+        "Flutter",
+        "React.js",
+        "Express.js",
+        "JavaScript"
+      ],
       "responsibilities": [
         "Responsible for the development of Morf, a study assistant integrated with OpenAI's generative AI, using Flutter.",
         "Technologies used: Bloc, WebSocket, Firebase Auth, Storage, Firestore, Remote Config, Analytics, Codemagic CI/CD.",
@@ -44,7 +49,11 @@
       "company": "CI&T",
       "location": "São Paulo, Brazil",
       "period": "Jan 2022 - Mar 2023 · Part-time",
-      "tags": ["Android Kotlin", "MVVM", "GitHub CI/CD"],
+      "tags": [
+        "Android Kotlin",
+        "MVVM",
+        "GitHub CI/CD"
+      ],
       "responsibilities": [
         "Developed features in a modularized application using MVVM architecture with Kotlin.",
         "Utilized GitHub CI/CD for continuous integration and delivery."
@@ -55,11 +64,29 @@
       "company": "Dextra",
       "location": "São Paulo, Brazil",
       "period": "Sep 2021 - Dec 2021 · Part-time",
-      "tags": ["Flutter Web", "Android Kotlin"],
+      "tags": [
+        "Flutter Web",
+        "Android Kotlin"
+      ],
       "responsibilities": [
         "Participated in a challenge using Flutter Web.",
         "Started a development track in Android using Kotlin."
       ]
+    }
+  },
+  "education-navbar": "Education",
+  "education": "EDUCATION HISTORY",
+  "education-subtitle": "Education",
+  "schools": {
+    "impacta": {
+      "name": "Faculdade Impacta Tecnologia",
+      "title": "Technologist in Systems Analysis and Development",
+      "period": "Feb/2023 - Dec/2025"
+    },
+    "etec": {
+      "name": "Etec Abdias do Nascimento",
+      "title": "High School with technical qualification in Systems Development",
+      "period": "Feb/2020 - Dec/2022"
     }
   }
 }

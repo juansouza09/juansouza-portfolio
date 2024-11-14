@@ -7,7 +7,6 @@ import Footer from "./components/Footer";
 import ExperienceSection from "./components/ExperienceSection";
 import EducationSection from "./components/EducationSection";
 import SkillsSection from "./components/SkillsSection";
-import FeedbackSection from "./components/FeedbackSection";
 import "./i18n";
 
 const App = () => {
@@ -26,6 +25,9 @@ const App = () => {
         </section>
         <section id="experience">
           <ExperienceSection />
+        </section>
+        <section id="education">
+          <EducationSection />
         </section>
         <section id="skills">
           <SkillsSection />

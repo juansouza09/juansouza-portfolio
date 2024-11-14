@@ -12,11 +12,10 @@ const ServicesContainer = styled.section`
   text-align: center;
   width: 100vw;
   color: #fff;
-  padding: 10px;
+  padding: 6rem 0;
   overflow-x: hidden;
   box-sizing: border-box;
   ${media.mobile`
-  margin-top: 30px;
   `}
 `;
 

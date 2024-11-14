@@ -31,7 +31,12 @@
       "company": "Questione.ai",
       "location": "São Paulo, Brasil",
       "period": "Jun 2023 - Atual · Tempo Integral",
-      "tags": ["Flutter", "React.js", "Express.js","JavaScript"],
+      "tags": [
+        "Flutter",
+        "React.js",
+        "Express.js",
+        "JavaScript"
+      ],
       "responsibilities": [
         "Responsável pelo desenvolvimento do Morf, um assistente de estudos integrado à IA generativa da OpenAI, utilizando Flutter.",
         "Tecnologias utilizadas: Bloc, WebSocket, Firebase Auth, Storage, Firestore, Remote Config, Analytics, Codemagic CI/CD.",
@@ -44,7 +49,11 @@
       "company": "CI&T",
       "location": "São Paulo, Brasil",
       "period": "Jan 2022 - Mar 2023 · Meio Período",
-      "tags": ["Android Kotlin", "MVVM", "GitHub CI/CD"],
+      "tags": [
+        "Android Kotlin",
+        "MVVM",
+        "GitHub CI/CD"
+      ],
       "responsibilities": [
         "Desenvolvimento de features em um aplicativo modularizado utilizando arquitetura MVVM com Kotlin.",
         "Utilização de GitHub CI/CD para integração contínua e entrega de versões."
@@ -55,11 +64,29 @@
       "company": "Dextra",
       "location": "São Paulo, Brasil",
       "period": "Set 2021 - Dez 2021 · Meio Período",
-      "tags": ["Flutter Web", "Android Kotlin"],
+      "tags": [
+        "Flutter Web",
+        "Android Kotlin"
+      ],
       "responsibilities": [
         "Participação em um desafio utilizando Flutter Web.",
         "Início de uma trilha em desenvolvimento Android utilizando Kotlin."
       ]
+    }
+  },
+  "education-navbar": "Educação",
+  "education": "HISTÓRICO ACADÊMICO",
+  "education-subtitle": "Educação",
+  "schools": {
+    "impacta": {
+      "name": "Faculdade Impacta Tecnologia",
+      "title": "Tecnólogo em Análise e Desenvolvimento de Sistemas",
+      "period": "Fev/2023 - Dez/2025"
+    },
+    "etec": {
+      "name": "Etec Abdias do Nascimento",
+      "title": "Ensino médio com habilitação técnica em Desenvolvimento de Sistemas",
+      "period": "Fev/2020 - Dez/2022"
     }
   }
 }
