@@ -132,7 +132,7 @@ const BackgroundShape = styled.div`
 
   ${media.mobile`
     width: 16rem;
-    height: 22rem;
+    height: 19rem;
   `}
 `;
 
