@@ -307,7 +307,7 @@ In order to be iterable, non-array objects must have a [Symbol.iterator]() metho
 
   ${U.mobile`
     width: 16rem;
-    height: 22rem;
+    height: 19rem;
   `}
 `,OC=P.img`
   position: relative;
