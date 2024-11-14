@@ -223,14 +223,14 @@ In order to be iterable, non-array objects must have a [Symbol.iterator]() metho
     flex-direction: column;
     justify-content: space-around;
     padding: 0 5%;
-    height: 100vh;
+    height: 100%;
   `}
 `,PC=P.div`
   max-width: 500px;
   margin-right: 20px;
 
   ${U.mobile`
-    margin: 10px 0px;
+    margin-top: 40%;
   `}
 `,EC=P.div`
   display: flex;
