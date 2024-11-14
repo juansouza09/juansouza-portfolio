@@ -137,7 +137,7 @@ const PortfolioSection = () => {
       <TitleText>{t("portfolio-subtitle")}</TitleText>
       <PortfolioGrid>
         <PortfolioItem
-          href="https://play.google.com/store/apps/details?id=ai.teachnology.morf&hl=pt_BR&pli=1"
+          href="https://morf.questione.ai/"
           target="_blank"
           rel="noopener noreferrer"
         >
