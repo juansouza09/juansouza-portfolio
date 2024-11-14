@@ -6,11 +6,11 @@ import { useTranslation } from "react-i18next";
 
 const SkillsContainer = styled.section`
   padding: 6rem 10%;
-  margin-top: 4rem;
   display: flex;
   flex-direction: column;
   color: #fff;
   align-items: center;
+  background-color: #121212;
 `;
 
 const Title = styled.h2`

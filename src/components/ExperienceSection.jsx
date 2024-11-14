@@ -6,7 +6,6 @@ import { media } from "../styles/media";
 const WorkContainer = styled.section`
   display: flex;
   padding: 6rem 10%;
-  margin-top: 4rem;
   width: 100vw;
   color: #fff;
   gap: 50px;

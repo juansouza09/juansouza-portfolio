@@ -15,6 +15,7 @@ const ServicesContainer = styled.section`
   padding: 6rem 0;
   overflow-x: hidden;
   box-sizing: border-box;
+  background-color: #121212;
   ${media.mobile`
   `}
 `;

@@ -7,6 +7,7 @@ const EducationContainer = styled.section`
   color: #fff;
   display: flex;
   justify-content: center;
+  background-color: #121212;
 `;
 
 const EducationContent = styled.div`

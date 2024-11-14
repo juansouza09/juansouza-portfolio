@@ -10,11 +10,11 @@ const PortfolioContainer = styled.section`
   display: flex;
   flex-direction: column;
   padding: 6rem 10%;
-  margin-top: 4rem;
   width: 100vw;
   color: #fff;
   overflow-x: hidden;
   box-sizing: border-box;
+  background-color: #121212;
 `;
 
 const PortfolioGrid = styled.div`
