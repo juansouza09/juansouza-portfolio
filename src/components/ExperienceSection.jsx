@@ -5,10 +5,9 @@ import { media } from "../styles/media";
 
 const WorkContainer = styled.section`
   display: flex;
-  padding: 60px 20px;
+  padding: 6rem 10%;
+  margin-top: 4rem;
   width: 100vw;
-  padding-left: 10%;
-  padding-right: 10%;
   color: #fff;
   gap: 50px;
   overflow-x: hidden;
@@ -16,7 +15,6 @@ const WorkContainer = styled.section`
   background-color: #121212;
   ${media.tablet`
   flex-direction: column;
-  padding: 40px 5%;
 `}
 
   ${media.mobile`

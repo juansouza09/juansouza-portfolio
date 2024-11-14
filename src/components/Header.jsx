@@ -202,7 +202,7 @@ const Header = () => {
       <Logo>J S</Logo>
 
       <NavLinks isOpen={menuOpen}>
-        {["about-me", "services", "portfolio", "experience"].map((section) => (
+        {["about-me", "services", "portfolio", "experience", "skills"].map((section) => (
           <NavLinkStyled
             key={section}
             to={section}

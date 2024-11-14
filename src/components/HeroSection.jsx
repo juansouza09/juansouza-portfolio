@@ -14,7 +14,6 @@ const HeroContainer = styled.section`
   background-color: #121212;
   color: #fff;
   padding: 0 10%;
-  box-sizing: border-box;
   font-family: "Inter", sans-serif;
   overflow-x: hidden;
   box-sizing: border-box;

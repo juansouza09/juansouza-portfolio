@@ -9,7 +9,8 @@ import { media } from "../styles/media";
 const PortfolioContainer = styled.section`
   display: flex;
   flex-direction: column;
-  padding: 60px 10%;
+  padding: 6rem 10%;
+  margin-top: 4rem;
   width: 100vw;
   color: #fff;
   overflow-x: hidden;
