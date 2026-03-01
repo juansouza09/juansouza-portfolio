@@ -1,188 +1,303 @@
-import React from "react";
 import styled from "styled-components";
 import luaStationImg from "../assets/ls-image.jpg";
 import morfImg from "../assets/morf-image.jpg";
-import coffeeImg from "../assets/coffee-shop-image.PNG";
+import clubeRincaoImg from "../assets/rincao.jpg";
+import janoLogoImg from "../assets/jano-logo.png";
+import bphSiteImg from "../assets/bph-site.png";
+import santaRochaImg from "../assets/santa-rocha.png";
 import { useTranslation } from "react-i18next";
 import { media } from "../styles/media";
 
-const PortfolioContainer = styled.section`
-  display: flex;
-  flex-direction: column;
-  padding: 6rem 10%;
-  width: 100vw;
-  color: #fff;
-  overflow-x: hidden;
-  box-sizing: border-box;
-  background-color: #121212;
+const Section = styled.section`
+  width: min(1180px, 100%);
+  margin: 0 auto;
+  padding: 24px 24px 32px;
+  display: grid;
+  gap: 22px;
+
+  ${media.mobile`
+    padding: 16px 16px 24px;
+    gap: 16px;
+  `}
 `;
 
-const PortfolioGrid = styled.div`
-  display: flex;
-  justify-content: center;
-  margin-top: 30px;
-  gap: 20px;
-  width: 100%;
+const Header = styled.div`
+  display: grid;
+  gap: 12px;
+`;
+
+const Subtitle = styled.div`
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  width: fit-content;
+  color: rgba(255, 255, 255, 0.56);
+  letter-spacing: 0.18em;
+  font-size: 12px;
+  text-transform: uppercase;
+`;
+
+const Line = styled.span`
+  width: 18px;
+  height: 1px;
+  background: rgba(255, 255, 255, 0.4);
+`;
+
+const Title = styled.h2`
+  margin: 0;
+  font-family: "Plus Jakarta Sans", sans-serif;
+  font-size: clamp(34px, 6vw, 54px);
+  line-height: 1;
+  letter-spacing: -0.04em;
+`;
+
+const Description = styled.p`
+  margin: 0;
+  max-width: 720px;
+  color: rgba(255, 255, 255, 0.64);
+  font-size: 16px;
+  line-height: 1.85;
+
+  ${media.mobile`
+    font-size: 14px;
+    line-height: 1.75;
+  `}
+`;
+
+const Grid = styled.div`
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 18px;
 
   ${media.tablet`
-    flex-wrap: wrap;
+    grid-template-columns: 1fr;
   `}
 
   ${media.mobile`
-    flex-direction: column;
-    align-items: center;
+    gap: 14px;
   `}
 `;
 
-const PortfolioItem = styled.a`
+const Card = styled.a`
   position: relative;
-  background-color: #333;
-  border-radius: 10px;
-  width: 100%;
+  display: grid;
+  align-content: end;
+  min-height: ${({ $featured }) => ($featured ? "520px" : "380px")};
+  padding: 24px;
   overflow: hidden;
-  cursor: pointer;
+  border-radius: 36px;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  color: #fff;
   text-decoration: none;
-  color: inherit;
+  background-color: #1a1a1f;
+  transition:
+    transform 0.24s ease,
+    border-color 0.24s ease;
 
-  img {
-    width: 100%;
-    max-height: 500px; /* Defina uma altura padrão */
-    object-fit: cover;
-    border-radius: 10px 10px 0 0; /* Borda arredondada apenas no topo */
+  &:hover {
+    transform: translateY(-6px);
+    border-color: rgba(126, 116, 241, 0.28);
   }
 
-  &:hover .overlay {
-    transform: translateY(0);
-  }
+  ${media.mobile`
+    min-height: ${({ $featured }) => ($featured ? "380px" : "300px")};
+    padding: 18px;
+    border-radius: 24px;
+  `}
+`;
+
+const CardImage = styled.img`
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  filter: saturate(1.02) contrast(1.02);
+  transform: scale(1.02);
 `;
 
 const Overlay = styled.div`
   position: absolute;
-  bottom: 0;
-  width: 100%;
-  background-color: rgba(255, 255, 255, 0.9);
-  padding: 15px;
-  box-sizing: border-box;
-  transition: transform 0.3s ease;
-  transform: translateY(5%); /* Esconde a overlay inicialmente */
+  inset: 0;
+  background:
+    linear-gradient(180deg, rgba(8, 8, 10, 0.16), rgba(8, 8, 10, 0.9)),
+    linear-gradient(140deg, rgba(126, 116, 241, 0.12), transparent 46%);
 `;
 
-const ProjectTitle = styled.p`
-  font-size: 18px;
-  color: #232e35;
-  font-weight: 600;
-  margin: 0;
+const CardContent = styled.div`
+  position: relative;
+  z-index: 1;
+  display: grid;
+  gap: 14px;
 `;
 
-const TechTags = styled.div`
+const Meta = styled.div`
   display: flex;
-  align-items: center;
-  gap: 10px;
-  margin-top: 10px;
+  flex-wrap: wrap;
+  gap: 8px;
 `;
 
-const TechTag = styled.span`
-  background-color: #e0e0e0;
-  color: #333;
-  padding: 4px 8px;
-  border-radius: 4px;
+const MetaTag = styled.span`
+  display: inline-flex;
+  align-items: center;
+  min-height: 34px;
+  padding: 0 12px;
+  border-radius: 999px;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  background: rgba(255, 255, 255, 0.06);
   font-size: 12px;
-  font-weight: 500;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+
+  ${media.mobile`
+    min-height: 30px;
+    padding: 0 10px;
+    font-size: 11px;
+  `}
 `;
 
-const Subtitle = styled.div`
-  display: flex;
-  align-items: center;
-  gap: 10px;
-  margin-bottom: 10px;
-`;
-
-const Line = styled.span`
-  width: 15px;
-  height: 1px;
-  background-color: #d9d9d9;
-`;
-
-const SubtitleText = styled.span`
-  font-size: 14px;
-  letter-spacing: 4px;
-  color: #656d72;
-  font-family: "Inter", sans-serif;
-  font-weight: 500;
-`;
-
-const TitleText = styled.span`
-  font-size: 26px;
-  color: #ffffff;
+const CardTitle = styled.h3`
+  margin: 0;
   font-family: "Plus Jakarta Sans", sans-serif;
-  font-weight: 800;
+  font-size: ${({ $featured }) => ($featured ? "42px" : "30px")};
+  line-height: 0.98;
+  letter-spacing: -0.04em;
+
+  ${media.mobile`
+    font-size: ${({ $featured }) => ($featured ? "28px" : "24px")};
+  `}
 `;
 
-const DescriptionText = styled.span`
-  font-size: 14px;
-  color: #333;
-  font-family: "Inter", sans-serif;
-  font-weight: 500;
+const CardText = styled.p`
+  margin: 0;
+  max-width: 520px;
+  color: rgba(255, 255, 255, 0.72);
+  font-size: 15px;
+  line-height: 1.8;
+
+  ${media.mobile`
+    font-size: 14px;
+    line-height: 1.7;
+  `}
+`;
+
+const FooterRow = styled.div`
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 12px;
+  color: rgba(255, 255, 255, 0.72);
+  font-size: 13px;
+  font-weight: 600;
+
+  ${media.mobile`
+    font-size: 12px;
+  `}
 `;
 
 const PortfolioSection = () => {
   const { t } = useTranslation();
 
+  const projects = [
+    {
+      title: t("project-2-title"),
+      description: t("project-2-desc"),
+      image: clubeRincaoImg,
+      href: "https://www.cluberincao.com.br",
+      tags: ["Operação", "WhatsApp"],
+      featured: true,
+      footer: "Acesso + atendimento",
+    },
+    {
+      title: t("project-5-title"),
+      description: t("project-5-desc"),
+      image: santaRochaImg,
+      href: "https://santarocha.design/",
+      tags: ["Web", "Design"],
+      featured: false,
+      footer: "Presença digital",
+    },
+    {
+      title: t("project-6-title"),
+      description: t("project-6-desc"),
+      image: bphSiteImg,
+      href: "https://bph.org.br/",
+      tags: ["Institucional", "Health"],
+      featured: false,
+      footer: "Presença internacional",
+    },
+    {
+      title: t("project-3-title"),
+      description: t("project-3-desc"),
+      image: janoLogoImg,
+      href: "https://jano-web.vercel.app/",
+      tags: ["Projeto pessoal", "IA"],
+      featured: false,
+      footer: "Exploração de produto",
+    },
+    {
+      title: t("project-4-title"),
+      description: t("project-4-desc"),
+      image: luaStationImg,
+      href: "https://github.com/juansouza09/LuaStation",
+      tags: ["Android", "Autor"],
+      featured: false,
+      footer: "Visão autoral",
+    },
+    {
+      title: t("project-1-title"),
+      description: t("project-1-desc"),
+      image: morfImg,
+      href: "https://github.com/juansouza09",
+      tags: ["OpenAI", "Produto"],
+      featured: false,
+      footer: "Case de IA",
+    },
+  ];
+
   return (
-    <PortfolioContainer>
-      <Subtitle>
-        <Line />
-        <SubtitleText>{t("portfolio")}</SubtitleText>
-      </Subtitle>
-      <TitleText>{t("portfolio-subtitle")}</TitleText>
-      <PortfolioGrid>
-        <PortfolioItem
-          href="https://morf.questione.ai/"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <img src={morfImg} alt="Morf" />
-          <Overlay className="overlay">
-            <ProjectTitle>{t("project-1-title")}</ProjectTitle>
-            <DescriptionText>{t("project-1-desc")}</DescriptionText>
-            <TechTags>
-              <TechTag>Flutter</TechTag>
-              <TechTag>↗</TechTag>
-            </TechTags>
-          </Overlay>
-        </PortfolioItem>
-        <PortfolioItem
-          href="https://github.com/juansouza09/LuaStation"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <img src={luaStationImg} alt="Lua Station" />
-          <Overlay className="overlay">
-            <ProjectTitle>{t("project-2-title")}</ProjectTitle>
-            <DescriptionText>{t("project-2-desc")}</DescriptionText>
-            <TechTags>
-              <TechTag>Android Kotlin</TechTag>
-              <TechTag>↗</TechTag>
-            </TechTags>
-          </Overlay>
-        </PortfolioItem>
-        <PortfolioItem
-          href="https://github.com/juansouza09/coffee-shop-flutter"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <img src={coffeeImg} alt="Coffee Shop UI" />
-          <Overlay className="overlay">
-            <ProjectTitle>{t("project-3-title")}</ProjectTitle>
-            <DescriptionText>{t("project-3-desc")}</DescriptionText>
-            <TechTags>
-              <TechTag>Flutter</TechTag>
-              <TechTag>↗</TechTag>
-            </TechTags>
-          </Overlay>
-        </PortfolioItem>
-      </PortfolioGrid>
-    </PortfolioContainer>
+    <Section>
+      <Header>
+        <Subtitle>
+          <Line />
+          {t("portfolio")}
+        </Subtitle>
+        <Title>{t("portfolio-subtitle")}</Title>
+        <Description>
+          Uma seleção de projetos que mostram profundidade técnica, decisões de produto e
+          capacidade de entregar experiência real.
+        </Description>
+      </Header>
+
+      <Grid>
+        {projects.map((project) => (
+          <Card
+            key={project.title}
+            href={project.href}
+            target="_blank"
+            rel="noopener noreferrer"
+            $featured={project.featured}
+          >
+            <CardImage src={project.image} alt={project.title} />
+            <Overlay />
+            <CardContent>
+              <Meta>
+                {project.tags.map((tag) => (
+                  <MetaTag key={tag}>{tag}</MetaTag>
+                ))}
+              </Meta>
+              <CardTitle $featured={project.featured}>{project.title}</CardTitle>
+              <CardText>{project.description}</CardText>
+              <FooterRow>
+                <span>{project.footer}</span>
+                <span>↗</span>
+              </FooterRow>
+            </CardContent>
+          </Card>
+        ))}
+      </Grid>
+    </Section>
   );
 };
 

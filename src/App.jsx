@@ -1,4 +1,4 @@
-import React from "react";
+import ScrollReveal from "./components/ScrollReveal";
 import Header from "./components/Header";
 import HeroSection from "./components/HeroSection";
 import Services from "./components/Services";
@@ -7,31 +7,34 @@ import Footer from "./components/Footer";
 import ExperienceSection from "./components/ExperienceSection";
 import EducationSection from "./components/EducationSection";
 import SkillsSection from "./components/SkillsSection";
+import "./App.css";
 import "./i18n";
 
 const App = () => {
   return (
-    <div>
+    <div className="app-shell">
+      <div className="app-glow app-glow-primary" />
+      <div className="app-glow app-glow-secondary" />
       <Header />
-      <main>
-        <section id="about-me">
+      <main className="app-main">
+        <section id="about-me" className="app-section app-hero-section">
           <HeroSection />
         </section>
-        <section id="services">
+        <ScrollReveal id="services" delay={80}>
           <Services />
-        </section>
-        <section id="portfolio">
+        </ScrollReveal>
+        <ScrollReveal id="portfolio" delay={140}>
           <PortfolioSection />
-        </section>
-        <section id="experience">
+        </ScrollReveal>
+        <ScrollReveal id="experience" delay={200}>
           <ExperienceSection />
-        </section>
-        <section id="education">
+        </ScrollReveal>
+        <ScrollReveal id="education" delay={260}>
           <EducationSection />
-        </section>
-        <section id="skills">
+        </ScrollReveal>
+        <ScrollReveal id="skills" delay={320}>
           <SkillsSection />
-        </section>
+        </ScrollReveal>
       </main>
       <Footer />
     </div>

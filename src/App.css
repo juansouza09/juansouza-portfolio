@@ -1,64 +1,77 @@
+@import url("https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Plus+Jakarta+Sans:wght@600;700;800&display=swap");
+
 #root {
-  max-width: 1280px;
-  margin: 0 auto;
-  text-align: center;
+  width: 100%;
 }
 
-/* App.css ou Global CSS */
-/* App.css */
 * {
-  margin: 0;
-  padding: 0;
   box-sizing: border-box;
 }
 
-html,
-body {
-  overflow-x: hidden;
-  /* Garante que não haja rolagem horizontal */
-  width: 100vw;
-  /* Garante que a largura seja da viewport */
+.app-shell {
+  position: relative;
+  min-height: 100vh;
+  background:
+    radial-gradient(circle at top right, rgba(126, 116, 241, 0.14), transparent 32%),
+    radial-gradient(circle at 20% 20%, rgba(255, 255, 255, 0.04), transparent 26%),
+    linear-gradient(180deg, #0c0c0e 0%, #121214 24%, #141419 58%, #101012 100%);
+  color: #ffffff;
+  overflow: hidden;
 }
 
-
-
-.logo {
-  height: 6em;
-  padding: 1.5em;
-  will-change: filter;
-  transition: filter 300ms;
+.app-glow {
+  position: fixed;
+  inset: auto;
+  pointer-events: none;
+  z-index: 0;
+  filter: blur(90px);
+  opacity: 0.8;
 }
 
-.logo:hover {
-  filter: drop-shadow(0 0 2em #646cffaa);
+.app-glow-primary {
+  top: -120px;
+  right: -80px;
+  width: 320px;
+  height: 320px;
+  background: rgba(126, 116, 241, 0.2);
 }
 
-.logo.react:hover {
-  filter: drop-shadow(0 0 2em #61dafbaa);
+.app-glow-secondary {
+  left: -80px;
+  top: 38%;
+  width: 280px;
+  height: 280px;
+  background: rgba(126, 116, 241, 0.12);
 }
 
-@keyframes logo-spin {
-  from {
-    transform: rotate(0deg);
+.app-main {
+  position: relative;
+  z-index: 1;
+  padding: 0 0 2rem;
+}
+
+.app-section {
+  width: 100%;
+}
+
+.app-hero-section {
+  position: relative;
+}
+
+@media (max-width: 768px) {
+  .app-glow-primary {
+    top: -140px;
+    right: -120px;
+    width: 220px;
+    height: 220px;
+    opacity: 0.5;
   }
 
-  to {
-    transform: rotate(360deg);
+  .app-glow-secondary {
+    left: -120px;
+    top: 45%;
+    width: 180px;
+    height: 180px;
+    opacity: 0.35;
   }
 }
-
-@media (prefers-reduced-motion: no-preference) {
-  a:nth-of-type(2) .logo {
-    animation: logo-spin infinite 20s linear;
-  }
-}
-
-.card {
-  padding: 2em;
-}
-
-.read-the-docs {
-  color: #888;
-}
-
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;700&display=swap');

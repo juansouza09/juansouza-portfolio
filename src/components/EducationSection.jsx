@@ -1,89 +1,174 @@
-import React from "react";
 import styled from "styled-components";
 import { useTranslation } from "react-i18next";
+import { media } from "../styles/media";
 
-const EducationContainer = styled.section`
-  padding: 6rem 10%;
-  color: #fff;
-  display: flex;
-  justify-content: center;
-  background-color: #121212;
+const Section = styled.section`
+  width: min(1180px, 100%);
+  margin: 0 auto;
+  padding: 24px 24px 32px;
+  display: grid;
+  grid-template-columns: minmax(0, 0.58fr) minmax(280px, 0.42fr);
+  gap: 18px;
+
+  ${media.tablet`
+    grid-template-columns: 1fr;
+  `}
+
+  ${media.mobile`
+    padding: 16px 16px 24px;
+    gap: 14px;
+  `}
 `;
 
-const EducationContent = styled.div`
-  max-width: 600px;
-  width: 100%;
-  text-align: left;
+const Panel = styled.div`
+  padding: 28px;
+  border-radius: 34px;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  background:
+    linear-gradient(180deg, rgba(255, 255, 255, 0.06), rgba(255, 255, 255, 0.02)),
+    rgba(16, 16, 20, 0.78);
+  display: grid;
+  gap: 20px;
+
+  ${media.mobile`
+    padding: 20px;
+    border-radius: 24px;
+    gap: 16px;
+  `}
 `;
 
 const Subtitle = styled.div`
-  display: flex;
+  display: inline-flex;
   align-items: center;
-  gap: 10px; /* Espaçamento entre o traço e o texto */
-  padding: 0 10%;
-  margin-bottom: 10px;
+  gap: 10px;
+  width: fit-content;
+  color: rgba(255, 255, 255, 0.56);
+  letter-spacing: 0.18em;
+  font-size: 12px;
+  text-transform: uppercase;
 `;
 
 const Line = styled.span`
-  width: 15px; /* Largura do traço */
+  width: 18px;
   height: 1px;
-  background-color: #d9d9d9;
-`;
-
-const SubtitleText = styled.span`
-  font-size: 14px;
-  letter-spacing: 4px;
-  color: #656d72;
-  font-family: "Inter", sans-serif;
-  font-weight: 500; /* Inter Medium */
+  background: rgba(255, 255, 255, 0.4);
 `;
 
 const Title = styled.h2`
-  font-size: 26px;
-  font-weight: 800;
+  margin: 0;
   font-family: "Plus Jakarta Sans", sans-serif;
-  color: #fff;
-  margin-bottom: 30px;
+  font-size: clamp(34px, 6vw, 52px);
+  line-height: 1;
+  letter-spacing: -0.04em;
 `;
 
 const Timeline = styled.div`
   position: relative;
-  margin-left: 20px;
-  padding-left: 20px;
-  border-left: 2px solid #444;
+  display: grid;
+  gap: 18px;
+  padding-left: 26px;
+
+  &::before {
+    content: "";
+    position: absolute;
+    top: 6px;
+    bottom: 6px;
+    left: 7px;
+    width: 2px;
+    background: rgba(255, 255, 255, 0.08);
+  }
 `;
 
-const EducationItem = styled.div`
+const Item = styled.div`
   position: relative;
-  margin-bottom: 30px;
-  padding-left: 20px;
+  display: grid;
+  gap: 6px;
 `;
 
-const BulletPoint = styled.div`
+const Dot = styled.span`
   position: absolute;
-  left: -11px;
-  top: 5px;
-  width: 10px;
-  height: 10px;
-  background-color: #7e74f1;
+  left: -26px;
+  top: 8px;
+  width: 16px;
+  height: 16px;
   border-radius: 50%;
+  background: rgba(126, 116, 241, 0.18);
+  border: 1px solid rgba(126, 116, 241, 0.38);
+
+  &::after {
+    content: "";
+    position: absolute;
+    inset: 4px;
+    border-radius: 50%;
+    background: #7e74f1;
+  }
 `;
 
 const Institution = styled.h3`
-  font-size: 16px;
-  color: #f1f1f1;
   margin: 0;
+  font-size: 18px;
+  color: #ffffff;
 `;
 
 const Degree = styled.p`
-  font-size: 14px;
-  color: #888;
-  margin: 5px 0;
+  margin: 0;
+  color: rgba(255, 255, 255, 0.66);
+  line-height: 1.7;
+
+  ${media.mobile`
+    font-size: 14px;
+  `}
 `;
 
-const Year = styled.p`
-  font-size: 14px;
-  color: #888;
+const Year = styled.span`
+  font-size: 13px;
+  color: rgba(255, 255, 255, 0.48);
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+`;
+
+const HighlightCard = styled(Panel)`
+  background:
+    radial-gradient(circle at top right, rgba(126, 116, 241, 0.16), transparent 32%),
+    linear-gradient(180deg, rgba(255, 255, 255, 0.06), rgba(255, 255, 255, 0.02)),
+    rgba(16, 16, 20, 0.84);
+  align-content: space-between;
+`;
+
+const HighlightLabel = styled.span`
+  display: inline-flex;
+  width: fit-content;
+  min-height: 34px;
+  align-items: center;
+  padding: 0 12px;
+  border-radius: 999px;
+  background: rgba(126, 116, 241, 0.12);
+  border: 1px solid rgba(126, 116, 241, 0.24);
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: #d8d4ff;
+`;
+
+const HighlightTitle = styled.h3`
+  margin: 0;
+  font-family: "Plus Jakarta Sans", sans-serif;
+  font-size: clamp(28px, 4vw, 38px);
+  line-height: 1;
+  letter-spacing: -0.04em;
+`;
+
+const HighlightText = styled.p`
+  margin: 0;
+  font-size: 15px;
+  line-height: 1.9;
+  color: rgba(255, 255, 255, 0.68);
+
+  ${media.mobile`
+    font-size: 14px;
+    line-height: 1.75;
+  `}
 `;
 
 const EducationSection = () => {
@@ -91,28 +176,38 @@ const EducationSection = () => {
   const schools = t("schools", { returnObjects: true });
 
   return (
-    <EducationContainer>
-      <EducationContent>
+    <Section>
+      <Panel>
         <Subtitle>
           <Line />
-          <SubtitleText>{t("education")}</SubtitleText>
+          {t("education")}
         </Subtitle>
         <Title>{t("education-subtitle")}</Title>
+
         <Timeline>
           {Object.keys(schools).map((schoolKey) => {
             const school = schools[schoolKey];
+
             return (
-              <EducationItem key={schoolKey}>
-                <BulletPoint />
+              <Item key={schoolKey}>
+                <Dot />
                 <Institution>{school.name}</Institution>
                 <Degree>{school.title}</Degree>
                 <Year>{school.period}</Year>
-              </EducationItem>
+              </Item>
             );
           })}
         </Timeline>
-      </EducationContent>
-    </EducationContainer>
+      </Panel>
+
+      <HighlightCard>
+        <HighlightLabel>TCC</HighlightLabel>
+        <div>
+          <HighlightTitle>{t("education-highlight-title")}</HighlightTitle>
+          <HighlightText>{t("education-highlight-desc")}</HighlightText>
+        </div>
+      </HighlightCard>
+    </Section>
   );
 };
 

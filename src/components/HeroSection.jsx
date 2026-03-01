@@ -1,196 +1,276 @@
-import React from "react";
 import styled from "styled-components";
 import { FaGithub, FaLinkedin } from "react-icons/fa";
 import { useTranslation } from "react-i18next";
-import image from "../assets/juan-image.jpeg";
 import { media } from "../styles/media";
 
-const HeroContainer = styled.section`
-  display: flex;
+const HeroShell = styled.div`
+  position: relative;
+  width: min(1180px, 100%);
+  margin: 0 auto;
+  min-height: 100vh;
+  padding: 156px 24px 84px;
+  display: grid;
   align-items: center;
-  justify-content: space-between;
-  width: 100vw;
-  height: 85vh;
-  background-color: #121212;
-  color: #fff;
-  padding: 0 10%;
-  font-family: "Inter", sans-serif;
-  overflow-x: hidden;
-  box-sizing: border-box;
 
   ${media.tablet`
-    flex-direction: column;
-    padding: 0 5%;
-    justify-content: space-around;
+    min-height: auto;
+    padding-top: 136px;
   `}
 
   ${media.mobile`
-    flex-direction: column;
-    justify-content: space-around;
-    padding: 0 5%;
-    height: 100%;
+    padding: 112px 16px 48px;
   `}
 `;
 
-const TextContainer = styled.div`
-  max-width: 500px;
-  margin-right: 20px;
+const AmbientHalo = styled.div`
+  position: absolute;
+  top: 12%;
+  right: 6%;
+  width: 420px;
+  height: 420px;
+  border-radius: 50%;
+  pointer-events: none;
+  background:
+    radial-gradient(circle, rgba(126, 116, 241, 0.18), transparent 56%),
+    radial-gradient(circle at 30% 30%, rgba(255, 255, 255, 0.08), transparent 22%);
+  filter: blur(44px);
+  opacity: 0.9;
 
   ${media.mobile`
-    margin-top: 40%;
+    width: 220px;
+    height: 220px;
+    top: 10%;
+    right: -12%;
+    opacity: 0.6;
   `}
 `;
 
-const Subtitle = styled.div`
+const Content = styled.div`
+  position: relative;
+  z-index: 1;
+  display: grid;
+  gap: 26px;
+  max-width: 980px;
+
+  ${media.mobile`
+    gap: 18px;
+  `}
+`;
+
+const Eyebrow = styled.p`
+  margin: 0;
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: rgba(255, 255, 255, 0.52);
+
+  ${media.mobile`
+    font-size: 11px;
+    letter-spacing: 0.14em;
+  `}
+`;
+
+const Title = styled.h1`
+  margin: 0;
+  font-family: "Plus Jakarta Sans", sans-serif;
+  font-size: clamp(52px, 8vw, 98px);
+  line-height: 0.92;
+  letter-spacing: -0.055em;
+  max-width: 10ch;
+
+  span {
+    display: block;
+  }
+
+  .accent {
+    color: #cfcaff;
+  }
+
+  ${media.mobile`
+    max-width: none;
+    font-size: clamp(40px, 12vw, 58px);
+    line-height: 0.98;
+  `}
+`;
+
+const ActionRow = styled.div`
+  display: flex;
+  flex-wrap: wrap;
+  gap: 14px;
+  align-items: center;
+
+  ${media.mobile`
+    display: grid;
+    grid-template-columns: 1fr;
+  `}
+`;
+
+const PrimaryButton = styled.a`
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 54px;
+  padding: 0 24px;
+  border-radius: 999px;
+  background:
+    linear-gradient(180deg, rgba(126, 116, 241, 0.92), rgba(126, 116, 241, 0.74)),
+    rgba(255, 255, 255, 0.02);
+  box-shadow: 0 18px 34px rgba(126, 116, 241, 0.2);
+  color: #fff;
+  font-size: 15px;
+  font-weight: 700;
+  transition:
+    transform 0.22s ease,
+    box-shadow 0.22s ease;
+
+  &:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 22px 40px rgba(126, 116, 241, 0.24);
+  }
+
+  ${media.mobile`
+    width: 100%;
+  `}
+`;
+
+const SocialRow = styled.div`
   display: flex;
   align-items: center;
-  gap: 10px; /* Espaçamento entre o traço e o texto */
-  margin-bottom: 10px;
+  gap: 14px;
+  color: rgba(255, 255, 255, 0.62);
+
+  ${media.mobile`
+    flex-wrap: wrap;
+    gap: 10px;
+  `}
 `;
 
-const Line = styled.span`
-  width: 15px; /* Largura do traço */
-  height: 1px;
-  background-color: #d9d9d9;
-`;
-
-const SubtitleText = styled.span`
+const SocialLabel = styled.span`
   font-size: 14px;
-  letter-spacing: 4px;
-  color: #656d72;
-  font-family: "Inter", sans-serif;
-  font-weight: 500; /* Inter Medium */
+  color: rgba(255, 255, 255, 0.56);
+
+  ${media.mobile`
+    width: 100%;
+    font-size: 13px;
+    line-height: 1.6;
+  `}
 `;
 
-const Name = styled.h1`
-  font-size: 48px;
+const SocialIcon = styled.a`
+  width: 42px;
+  height: 42px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  background: rgba(255, 255, 255, 0.03);
   color: #fff;
-  margin: 0;
-  font-weight: 700;
-  display: flex;
-  gap: 8px;
-  font-family: "Plus Jakarta Sans", sans-serif;
-`;
+  transition:
+    transform 0.22s ease,
+    border-color 0.22s ease,
+    background-color 0.22s ease;
 
-const HighlightedName = styled.span`
-  color: #7e74f1;
-`;
-
-const Description = styled.p`
-  font-size: 18px;
-  color: #d3d3d3;
-  line-height: 1.6;
-  margin: 20px 0;
-`;
-
-const SocialMedia = styled.div`
-  display: flex;
-  gap: 20px;
-  margin-top: 20px;
-
-  a {
-    color: #fff;
-    font-size: 24px;
-    transition: color 0.3s;
-
-    &:hover {
-      color: #7e74f1;
-    }
+  &:hover {
+    transform: translateY(-2px);
+    border-color: rgba(126, 116, 241, 0.32);
+    background: rgba(126, 116, 241, 0.08);
   }
 `;
 
-const ImageContainer = styled.div`
-  position: relative;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  margin-left: 40px;
+const StatsGrid = styled.div`
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 14px;
 
   ${media.tablet`
-    margin-left: 0;
-    margin-top: 20px;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
   `}
 
   ${media.mobile`
-    margin-left: 0;
-    margin-top: 20px;
+    grid-template-columns: 1fr;
+    gap: 10px;
   `}
 `;
 
-const BackgroundShape = styled.div`
-  position: absolute;
-  width: 340px;
-  height: 420px;
-  background-color: #7e74f1;
-  transform: rotate(-10deg);
-  border-radius: 20px;
-
-  ${media.tablet`
-    width: 18rem;
-    height: 24rem;
-  `}
+const StatCard = styled.div`
+  padding: 18px;
+  border-radius: 24px;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  background:
+    linear-gradient(180deg, rgba(255, 255, 255, 0.05), rgba(255, 255, 255, 0.02)),
+    rgba(255, 255, 255, 0.02);
+  backdrop-filter: blur(12px);
 
   ${media.mobile`
-    width: 16rem;
-    height: 19rem;
-  `}
-`;
-
-const ProfileImage = styled.img`
-  position: relative;
-  width: 320px;
-  height: 420px;
-  border-radius: 20px;
-  z-index: 1;
-  object-fit: cover;
-
-  ${media.tablet`
-    width: 18rem;
-    height: 24rem;
+    padding: 16px;
+    border-radius: 20px;
   `}
 
-  ${media.mobile`
-    width: 16rem;
-    height: 22rem;
-  `}
+  strong {
+    display: block;
+    font-family: "Plus Jakarta Sans", sans-serif;
+    font-size: 20px;
+    margin-bottom: 6px;
+  }
+
+  span {
+    display: block;
+    font-size: 13px;
+    line-height: 1.6;
+    color: rgba(255, 255, 255, 0.62);
+  }
 `;
 
 const HeroSection = () => {
   const { t } = useTranslation();
+  const heroStats = t("hero-stats", { returnObjects: true });
 
   return (
-    <HeroContainer>
-      <TextContainer>
-        <Subtitle>
-          <Line />
-          <SubtitleText>{t("myNameIs")}</SubtitleText>
-        </Subtitle>
-        <Name>
-          Juan <HighlightedName>Souza.</HighlightedName>
-        </Name>
-        <Description>{t("description")}</Description>
-        <SocialMedia>
-          <a
+    <HeroShell>
+      <AmbientHalo />
+
+      <Content>
+        <Eyebrow>Software Engineer</Eyebrow>
+
+        <Title>
+          <span>{t("hero-line-1")}</span>
+          <span className="accent">{t("hero-line-2")}</span>
+        </Title>
+
+        <ActionRow>
+          <PrimaryButton href="#portfolio">{t("hero-primary-cta")}</PrimaryButton>
+        </ActionRow>
+
+        <SocialRow>
+          <SocialLabel>{t("hero-availability")}</SocialLabel>
+          <SocialIcon
             href="https://github.com/juansouza09"
             target="_blank"
             rel="noopener noreferrer"
           >
             <FaGithub />
-          </a>
-          <a
+          </SocialIcon>
+          <SocialIcon
             href="https://www.linkedin.com/in/juansouza9/"
             target="_blank"
             rel="noopener noreferrer"
           >
             <FaLinkedin />
-          </a>
-        </SocialMedia>
-      </TextContainer>
-      <ImageContainer>
-        <BackgroundShape />
-        <ProfileImage src={image} alt="Juan Souza" />
-      </ImageContainer>
-    </HeroContainer>
+          </SocialIcon>
+        </SocialRow>
+
+        <StatsGrid>
+          {heroStats.map((item) => (
+            <StatCard key={item.value}>
+              <strong>{item.value}</strong>
+              <span>{item.label}</span>
+            </StatCard>
+          ))}
+        </StatsGrid>
+      </Content>
+    </HeroShell>
   );
 };
 

@@ -1,82 +1,171 @@
 {
-  "myNameIs": "MY NAME IS",
-  "services-navbar": "Services",
-  "services": "SERVICES",
-  "about-me-navbar": "About me",
-  "services-subtitle": "Specialized in",
-  "service-1-title": "Mobile Apps",
-  "service-1-desc": "Building Android and iOS apps with an attractive design and agile performance. From development to publication in the stores.",
-  "service-2-title": "Web Backend & Frontend",
-  "service-2-desc": "Building modern web systems with secure backends and dynamic interfaces, guaranteeing performance and scalability.",
-  "portfolio-navbar": "Portfolio",
-  "portfolio": "MY PROJECTS",
-  "portfolio-subtitle": "Featured Portfolios",
-  "project-1-title": "Morf",
-  "project-1-desc": "Study assistant integrated into OpenAI's generative AI. Available on the Play Store and App Store.",
-  "project-2-title": "Lua Station",
-  "project-2-desc": "High school capstone project with technician - Platform developed to facilitate the entry of social minorities into the technology market as freelancers. This project was a semi-finalist in the Desafio Liga Jovem, competing against more than 600 groups.",
-  "project-3-title": "Coffee Shop UI",
-  "project-3-desc": "Mobile application that simulates the experience of a coffee shop, allowing users to explore coffee options, view details and personalize their choices in a modern and intuitive interface.",
+  "myNameIs": "SOFTWARE ENGINEER",
+  "hero-kicker": "AI, mobile, web and product execution in the same workflow.",
+  "hero-line-1": "I build digital experiences",
+  "hero-line-2": "with clarity, depth and real impact.",
+  "hero-primary-cta": "See projects",
+  "hero-secondary-cta": "Download resume",
+  "hero-availability": "Available for projects, products and new strategic initiatives.",
+  "hero-stats": [
+    {
+      "value": "+4 years",
+      "label": "in technology, building solutions"
+    }
+  ],
+  "about-me-navbar": "About",
+  "services-navbar": "Focus",
+  "portfolio-navbar": "Projects",
   "experience-navbar": "Experience",
-  "skills-navbar": "Skills",
-  "skills": "MY SKILLS",
-  "skills-subtitle": "Technologies",
+  "education-navbar": "Education",
+  "skills-navbar": "Stack",
+  "services": "FOCUS",
+  "services-subtitle": "Where I create the most impact",
+  "service-1-category": "Product + AI",
+  "service-1-title": "AI applied to real products",
+  "service-1-desc": "I build assistants, automations and AI-driven flows with a strong focus on usability, retention and continuous product evolution.",
+  "service-1-proof": "Morf was an AI product case integrated with OpenAI, taken to real usage and continuously evolved during its active lifecycle.",
+  "service-1-tags": [
+    "OpenAI",
+    "Flutter",
+    "CRM"
+  ],
+  "service-2-category": "Mobile",
+  "service-2-title": "Mobile applications",
+  "service-2-desc": "I work across Flutter and Android Kotlin, with experience in modular apps, MVVM architecture and feature delivery in professional environments.",
+  "service-2-proof": "Hands-on experience across startup and corporate contexts, from CI/CD pipelines to real production use.",
+  "service-2-tags": [
+    "Android Kotlin",
+    "Flutter",
+    "MVVM"
+  ],
+  "service-3-category": "Web + Operations",
+  "service-3-title": "Websites and web platforms",
+  "service-3-desc": "I build websites, web platforms and integrations that connect product, content and real functionality in a consistent experience.",
+  "service-3-proof": "From institutional websites to systems with QR codes, automations and WhatsApp integrations.",
+  "service-3-tags": [
+    "APIs",
+    "QR Code",
+    "WhatsApp"
+  ],
+  "service-pill-1": "Apps and mobile",
+  "service-pill-2": "Systems and integrations",
+  "service-pill-3": "Interface and experience",
+  "portfolio": "PORTFOLIO",
+  "portfolio-subtitle": "Selected work",
+  "project-1-title": "Morf",
+  "project-1-desc": "Study assistant built at Questione.ai with OpenAI generative AI, designed to make learning more accessible, human and engaging.",
+  "project-2-title": "Clube Rincão",
+  "project-2-desc": "A digital ecosystem with website, QR code park access, validation app, WhatsApp automations and AI over conversation data.",
+  "project-3-title": "Jano",
+  "project-3-desc": "AI financial assistant built to track transactions, goals and connected accounts while simulating the impact of financial decisions in a practical product experience.",
+  "project-4-title": "Lua Station",
+  "project-4-desc": "A personal project used to deepen product vision, interface decisions and technical execution outside a traditional briefing.",
+  "project-5-title": "Santa Rocha",
+  "project-5-desc": "Santa Rocha's website positions the brand as a premium solution for architects, highlighting exclusive materials, specialized technical support and a high-end visual presentation.",
+  "project-6-title": "BPH",
+  "project-6-desc": "Institutional website for Brazilian Pharma & Health, focused on presenting programs, sector data and the international presence of Brazilian pharma and health companies.",
   "resume": "Resume",
-  "description": "Creative software engineer with more than +3 years of experience in enterprise companies and startups. Proficient in Flutter, Android Kotlin and Express.js. Passionate about UI/UX.",
-  "careerPath": "CAREER PATH",
-  "workExperiences": "Work Experiences",
+  "description": "I work across frontend, backend, mobile and UI, using different technologies in each area to build complete products. I move from ideation to production, combining interface, business logic and usability to deliver functional, consistent products.",
+  "careerPath": "EXPERIENCE",
+  "workExperiences": "Experience and ongoing operations",
+  "experience-summary": "A path that mixes large companies, startup work, critical maintenance, digital operations and personal products.",
   "experiences": {
+    "ClubeRincao": {
+      "title": "Software Engineer",
+      "company": "Clube Rincão",
+      "location": "Brazil",
+      "period": "Jan 2025 - Present",
+      "summary": "I took over a broad digital evolution front, connecting user experience, operations, automation and real access and support flows.",
+      "tags": [
+        "Web",
+        "QR Code",
+        "WhatsApp API",
+        "AI",
+        "Operations"
+      ],
+      "responsibilities": [
+        "Website maintenance and development of new features.",
+        "Built the park access system with QR codes on tickets.",
+        "Developed an app to validate tickets and visualize people inside the park.",
+        "Implemented an AI bot on WhatsApp and ticket delivery through WhatsApp."
+      ],
+      "link": "https://www.cluberincao.com.br"
+    },
+    "Brevia": {
+      "title": "Software Engineer",
+      "company": "Brevia",
+      "location": "Brazil",
+      "period": "Jan 2025 - Present",
+      "summary": "Projects focused on digital presence, technical continuity and infrastructure reorganization without interrupting ongoing operations.",
+      "tags": [
+        "Web",
+        "Hosting",
+        "Maintenance",
+        "Continuity"
+      ],
+      "responsibilities": [
+        "Worked on the BPH website.",
+        "Worked on the Abiquifi website and the dictionary website.",
+        "Keeps ongoing maintenance and evolution of the live projects."
+      ]
+    },
     "Questione": {
       "title": "Software Engineer",
       "company": "Questione.ai",
       "location": "São Paulo, Brazil",
-      "period": "Jun 2023 - Present · Full-time",
+      "period": "Jun 2023 - Dec 2024",
+      "summary": "Product work with applied AI, combining experience, technology and continuous evolution in a startup focused on learning.",
       "tags": [
         "Flutter",
+        "OpenAI",
         "React.js",
-        "Express.js",
-        "JavaScript"
+        "Express.js"
       ],
       "responsibilities": [
-        "Responsible for the development of Morf, a study assistant integrated with OpenAI's generative AI, using Flutter.",
-        "Technologies used: Bloc, WebSocket, Firebase Auth, Storage, Firestore, Remote Config, Analytics, Codemagic CI/CD.",
-        "App available on the Play Store and App Store, with a user base of over 1,300 active users.",
-        "Developed a CRM with frontend using HTML, CSS, JavaScript, and backend in Node.js with Express, including JWT-based authentication."
-      ]
+        "Responsible for Morf, a study assistant integrated with OpenAI generative AI.",
+        "Used Bloc, WebSocket, Firebase Auth, Storage, Firestore, Remote Config, Analytics and Codemagic CI/CD.",
+        "Continuously evolved a real product during its active lifecycle, with focus on experience and stability.",
+        "Built a CRM with HTML, CSS and JavaScript frontend and Node.js with Express backend."
+      ],
+      "link": "https://github.com/juansouza09"
     },
     "CI&T": {
       "title": "Android Developer",
-      "company": "CI&T",
+      "company": "CI&T / Premiere",
       "location": "São Paulo, Brazil",
-      "period": "Jan 2022 - Mar 2023 · Part-time",
+      "period": "Jan 2022 - Mar 2023",
+      "summary": "Corporate mobile foundation centered on quality, predictability and feature evolution inside a professional environment.",
       "tags": [
         "Android Kotlin",
         "MVVM",
-        "GitHub CI/CD"
+        "CI/CD"
       ],
       "responsibilities": [
-        "Developed features in a modularized application using MVVM architecture with Kotlin.",
-        "Utilized GitHub CI/CD for continuous integration and delivery."
+        "Developed features in a modularized Kotlin application.",
+        "Worked with MVVM architecture and continuous integration in the delivery flow.",
+        "Strengthened the technical mobile foundation in a structured environment."
       ]
     },
     "Dextra": {
       "title": "Android Developer",
       "company": "Dextra",
       "location": "São Paulo, Brazil",
-      "period": "Sep 2021 - Dec 2021 · Part-time",
+      "period": "Sep 2021 - Dec 2021",
+      "summary": "First professional cycle, with hands-on development and a fast-growing foundation in Android plus experimentation with web.",
       "tags": [
         "Flutter Web",
         "Android Kotlin"
       ],
       "responsibilities": [
         "Participated in a challenge using Flutter Web.",
-        "Started a development track in Android using Kotlin."
+        "Started the Android development track using Kotlin."
       ]
     }
   },
-  "education-navbar": "Education",
-  "education": "EDUCATION HISTORY",
-  "education-subtitle": "Education",
+  "education": "EDUCATION",
+  "education-subtitle": "Training and milestones",
+  "education-highlight-title": "Semi-finalist at Desafio Liga Jovem",
+  "education-highlight-desc": "Capstone project created to help social minorities enter the technology market as freelancers, competing among more than 600 groups.",
   "schools": {
     "impacta": {
       "name": "Faculdade Impacta Tecnologia",
@@ -85,8 +174,12 @@
     },
     "etec": {
       "name": "Etec Abdias do Nascimento",
-      "title": "High School with technical qualification in Systems Development",
+      "title": "High school with technical qualification in Systems Development",
       "period": "Feb/2020 - Dec/2022"
     }
-  }
+  },
+  "skills": "STACK",
+  "skills-subtitle": "Tools and technologies",
+  "skills-description": "The technologies behind my work across product, mobile, web, automation and infrastructure.",
+  "footer-line": "Software engineer"
 }

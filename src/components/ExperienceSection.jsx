@@ -1,238 +1,369 @@
-import React, { useState } from "react";
+import { useEffect, useState } from "react";
 import styled from "styled-components";
 import { useTranslation } from "react-i18next";
 import { media } from "../styles/media";
 
-const WorkContainer = styled.section`
-  display: flex;
-  padding: 6rem 10%;
-  width: 100vw;
-  color: #fff;
-  gap: 50px;
-  overflow-x: hidden;
-  box-sizing: border-box;
-  background-color: #121212;
-  ${media.tablet`
-  flex-direction: column;
-`}
+const Section = styled.section`
+  width: min(1180px, 100%);
+  margin: 0 auto;
+  padding: 24px 24px 32px;
+  display: grid;
+  gap: 22px;
 
   ${media.mobile`
-  flex-direction: column;
-  padding: 20px 5%;
-  gap: 20px;
-`}
-`;
-
-const Sidebar = styled.div`
-  display: flex;
-  flex-direction: column;
-  width: 30%;
-  ${media.tablet`
-    width: 100%;
-    align-items: center;
+    padding: 16px 16px 24px;
+    gap: 16px;
   `}
 `;
 
-const CompanyList = styled.ul`
-  list-style: none;
-  padding: 0;
-  margin: 0;
-  ${media.mobile`
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-    gap: 10px;
-  `}
-`;
-
-const CompanyItem = styled.li`
-  margin-bottom: 10px;
-  font-size: 18px;
-  cursor: pointer;
-  padding: 10px;
-  border-radius: 8px;
-  background-color: ${({ selected }) => (selected ? "#333" : "transparent")};
-  color: ${({ selected }) => (selected ? "#fff" : "#aaa")};
-  font-family: "Plus Jakarta Sans", sans-serif;
-  display: flex;
-  justify-content: space-between;
-
-  &:hover {
-    background-color: #333;
-    color: #fff;
-  }
-
-  ${media.mobile`
-    font-size: 16px;
-    padding: 8px;
-    text-align: center;
-  `}
-`;
-
-const Content = styled.div`
-  width: 70%;
-  padding-left: 40px;
-
-  ${media.tablet`
-    width: 100%;
-    padding-left: 0;
-  `}
-
-  ${media.mobile`
-    width: 100%;
-    padding-left: 0;
-  `}
-`;
-
-const JobTitle = styled.h2`
-  font-size: 24px;
-  color: #ffffff;
-  font-family: "Plus Jakarta Sans", sans-serif;
-  font-weight: 800;
-
-  ${media.mobile`
-    font-size: 20px;
-    text-align: center;
-  `}
-`;
-
-const JobLocation = styled.p`
-  font-size: 14px;
-  color: #888;
-  margin-top: 5px;
-  ${media.mobile`
-    text-align: center;
-  `}
-`;
-
-const JobPeriod = styled.p`
-  font-size: 14px;
-  color: #888;
-  margin-top: 5px;
-
-  ${media.mobile`
-    text-align: center;
-  `}
-`;
-
-const JobTags = styled.div`
-  display: flex;
-  gap: 10px;
-  margin-top: 10px;
-
-  ${media.mobile`
-    justify-content: center;
-  `}
-`;
-
-const Tag = styled.span`
-  background-color: #333;
-  color: #fff;
-  padding: 4px 10px;
-  border-radius: 5px;
-  font-size: 12px;
-`;
-
-const JobDescription = styled.ul`
-  margin-top: 20px;
-  list-style-type: none;
-  padding: 0;
-
-  li {
-    font-size: 16px;
-    color: #ccc;
-    margin-bottom: 10px;
-    position: relative;
-
-    &:before {
-      content: "–";
-      color: #7e74f1;
-      font-weight: bold;
-      margin-right: 10px;
-    }
-
-    ${media.mobile`
-      text-align: left;
-      font-size: 14px;
-    `}
-  }
+const Header = styled.div`
+  display: grid;
+  gap: 12px;
 `;
 
 const Subtitle = styled.div`
-  display: flex;
+  display: inline-flex;
   align-items: center;
   gap: 10px;
-  margin-bottom: 10px;
+  width: fit-content;
+  color: rgba(255, 255, 255, 0.56);
+  letter-spacing: 0.18em;
+  font-size: 12px;
+  text-transform: uppercase;
 `;
 
 const Line = styled.span`
-  width: 15px;
+  width: 18px;
   height: 1px;
-  background-color: #d9d9d9;
+  background: rgba(255, 255, 255, 0.4);
 `;
 
-const SubtitleText = styled.span`
-  font-size: 14px;
-  letter-spacing: 4px;
-  color: #656d72;
-  font-family: "Inter", sans-serif;
-  font-weight: 500;
-`;
-
-const TitleText = styled.span`
-  font-size: 26px;
-  color: #ffffff;
+const Title = styled.h2`
+  margin: 0;
   font-family: "Plus Jakarta Sans", sans-serif;
-  font-weight: 800;
-  padding-bottom: 40px;
+  font-size: clamp(34px, 6vw, 54px);
+  line-height: 1;
+  letter-spacing: -0.04em;
+`;
+
+const Description = styled.p`
+  margin: 0;
+  max-width: 760px;
+  font-size: 16px;
+  line-height: 1.85;
+  color: rgba(255, 255, 255, 0.64);
+
+  ${media.mobile`
+    font-size: 14px;
+    line-height: 1.75;
+  `}
+`;
+
+const ExperienceShell = styled.div`
+  display: grid;
+  grid-template-columns: minmax(280px, 0.38fr) minmax(0, 0.62fr);
+  gap: 20px;
+
+  ${media.tablet`
+    grid-template-columns: 1fr;
+  `}
+`;
+
+const CompanyRail = styled.div`
+  display: grid;
+  gap: 12px;
+
+  ${media.mobile`
+    display: flex;
+    gap: 10px;
+    overflow-x: auto;
+    padding-bottom: 4px;
+    scroll-snap-type: x proximity;
+    -webkit-overflow-scrolling: touch;
+
+    &::-webkit-scrollbar {
+      display: none;
+    }
+  `}
+`;
+
+const CompanyButton = styled.button`
+  text-align: left;
+  padding: 18px 18px 18px 20px;
+  border-radius: 24px;
+  border: 1px solid
+    ${({ $selected }) =>
+      $selected ? "rgba(126, 116, 241, 0.32)" : "rgba(255, 255, 255, 0.08)"};
+  background:
+    ${({ $selected }) =>
+      $selected
+        ? "linear-gradient(135deg, rgba(126, 116, 241, 0.14), rgba(255, 255, 255, 0.03))"
+        : "rgba(255, 255, 255, 0.03)"};
+  color: #fff;
+  transition:
+    transform 0.22s ease,
+    border-color 0.22s ease,
+    background-color 0.22s ease;
+
+  &:hover {
+    transform: translateY(-2px);
+    border-color: rgba(126, 116, 241, 0.26);
+  }
+
+  ${media.mobile`
+    min-width: 220px;
+    padding: 16px;
+    border-radius: 20px;
+    scroll-snap-align: start;
+  `}
+`;
+
+const CompanyPeriod = styled.span`
+  display: block;
+  margin-bottom: 8px;
+  font-size: 11px;
+  color: rgba(255, 255, 255, 0.52);
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+`;
+
+const CompanyName = styled.strong`
+  display: block;
+  font-family: "Plus Jakarta Sans", sans-serif;
+  font-size: 18px;
+  line-height: 1.1;
+`;
+
+const CompanyRole = styled.span`
+  display: block;
+  margin-top: 6px;
+  font-size: 13px;
+  line-height: 1.6;
+  color: rgba(255, 255, 255, 0.58);
+`;
+
+const DetailCard = styled.article`
+  padding: 28px;
+  border-radius: 34px;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  background:
+    linear-gradient(135deg, rgba(126, 116, 241, 0.09), transparent 30%),
+    linear-gradient(180deg, rgba(255, 255, 255, 0.06), rgba(255, 255, 255, 0.02)),
+    rgba(16, 16, 20, 0.82);
+  display: grid;
+  gap: 20px;
+
+  ${media.mobile`
+    padding: 20px;
+    border-radius: 24px;
+    gap: 16px;
+  `}
+`;
+
+const DetailTop = styled.div`
+  display: grid;
+  gap: 12px;
+`;
+
+const DetailTopRow = styled.div`
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  gap: 12px;
+  align-items: flex-start;
+`;
+
+const DetailTitle = styled.h3`
+  margin: 0;
+  font-family: "Plus Jakarta Sans", sans-serif;
+  font-size: clamp(28px, 5vw, 44px);
+  line-height: 0.98;
+  letter-spacing: -0.04em;
+`;
+
+const DetailMeta = styled.div`
+  display: grid;
+  gap: 6px;
+  font-size: 14px;
+  color: rgba(255, 255, 255, 0.56);
+`;
+
+const Summary = styled.p`
+  margin: 0;
+  font-size: 16px;
+  line-height: 1.9;
+  color: rgba(255, 255, 255, 0.7);
+
+  ${media.mobile`
+    font-size: 14px;
+    line-height: 1.75;
+  `}
+`;
+
+const Tags = styled.div`
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+`;
+
+const Tag = styled.span`
+  display: inline-flex;
+  align-items: center;
+  min-height: 36px;
+  padding: 0 14px;
+  border-radius: 999px;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  background: rgba(255, 255, 255, 0.04);
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: rgba(255, 255, 255, 0.74);
+`;
+
+const BulletList = styled.ul`
+  display: grid;
+  gap: 14px;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+`;
+
+const Bullet = styled.li`
+  position: relative;
+  padding-left: 18px;
+  font-size: 15px;
+  line-height: 1.85;
+  color: rgba(255, 255, 255, 0.68);
+
+  ${media.mobile`
+    font-size: 14px;
+    line-height: 1.75;
+  `}
+
+  &::before {
+    content: "";
+    position: absolute;
+    top: 10px;
+    left: 0;
+    width: 7px;
+    height: 7px;
+    border-radius: 50%;
+    background: #7e74f1;
+  }
+`;
+
+const DetailLink = styled.a`
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: fit-content;
+  min-height: 46px;
+  padding: 0 18px;
+  border-radius: 999px;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  background: rgba(255, 255, 255, 0.04);
+  color: #fff;
+  font-size: 14px;
+  font-weight: 700;
+  transition:
+    transform 0.22s ease,
+    border-color 0.22s ease;
+
+  &:hover {
+    transform: translateY(-2px);
+    border-color: rgba(126, 116, 241, 0.32);
+  }
+
+  ${media.mobile`
+    width: 100%;
+  `}
 `;
 
 const ExperienceSection = () => {
-  const { t } = useTranslation();
-
-  const [selectedCompany, setSelectedCompany] = useState("Questione");
+  const { t, i18n } = useTranslation();
   const experiences = t("experiences", { returnObjects: true });
+  const orderedKeys = Object.keys(experiences);
+  const [selectedCompany, setSelectedCompany] = useState(orderedKeys[0]);
+
+  useEffect(() => {
+    const translatedExperiences = t("experiences", { returnObjects: true });
+    const translatedKeys = Object.keys(translatedExperiences);
+
+    setSelectedCompany((current) =>
+      translatedExperiences[current] ? current : translatedKeys[0]
+    );
+  }, [i18n.language, t]);
+
   const selectedExperience = experiences[selectedCompany];
 
   return (
-    <WorkContainer>
-      <Sidebar>
+    <Section>
+      <Header>
         <Subtitle>
           <Line />
-          <SubtitleText>{t("careerPath")}</SubtitleText>
+          {t("careerPath")}
         </Subtitle>
-        <TitleText>{t("workExperiences")}</TitleText>
-        <CompanyList>
-          {Object.keys(experiences).map((company) => (
-            <CompanyItem
-              key={company}
-              onClick={() => setSelectedCompany(company)}
-              selected={selectedCompany === company}
-            >
-              {company}
-              {selectedCompany === company && " >"}
-            </CompanyItem>
-          ))}
-        </CompanyList>
-      </Sidebar>
-      <Content>
-        <JobTitle>
-          {selectedExperience.title} - {selectedExperience.company}
-        </JobTitle>
-        <JobLocation>{selectedExperience.location}</JobLocation>
-        <JobPeriod>{selectedExperience.period}</JobPeriod>
-        <JobTags>
-          {selectedExperience.tags.map((tag, index) => (
-            <Tag key={index}>{tag}</Tag>
-          ))}
-        </JobTags>
-        <JobDescription>
-          {selectedExperience.responsibilities.map((task, index) => (
-            <li key={index}>{task}</li>
-          ))}
-        </JobDescription>
-      </Content>
-    </WorkContainer>
+        <Title>{t("workExperiences")}</Title>
+        <Description>{t("experience-summary")}</Description>
+      </Header>
+
+      <ExperienceShell>
+        <CompanyRail>
+          {orderedKeys.map((company) => {
+            const item = experiences[company];
+
+            return (
+              <CompanyButton
+                key={company}
+                type="button"
+                onClick={() => setSelectedCompany(company)}
+                $selected={selectedCompany === company}
+              >
+                <CompanyPeriod>{item.period}</CompanyPeriod>
+                <CompanyName>{item.company}</CompanyName>
+                <CompanyRole>{item.title}</CompanyRole>
+              </CompanyButton>
+            );
+          })}
+        </CompanyRail>
+
+        <DetailCard>
+          <DetailTop>
+            <DetailTopRow>
+              <div>
+                <DetailTitle>{selectedExperience.company}</DetailTitle>
+                <DetailMeta>
+                  <span>{selectedExperience.title}</span>
+                  <span>{selectedExperience.location}</span>
+                  <span>{selectedExperience.period}</span>
+                </DetailMeta>
+              </div>
+            </DetailTopRow>
+
+            <Summary>{selectedExperience.summary}</Summary>
+          </DetailTop>
+
+          <Tags>
+            {selectedExperience.tags.map((tag) => (
+              <Tag key={tag}>{tag}</Tag>
+            ))}
+          </Tags>
+
+          <BulletList>
+            {selectedExperience.responsibilities.map((task) => (
+              <Bullet key={task}>{task}</Bullet>
+            ))}
+          </BulletList>
+
+          {selectedExperience.link ? (
+            <DetailLink href={selectedExperience.link} target="_blank" rel="noopener noreferrer">
+              Abrir projeto
+            </DetailLink>
+          ) : null}
+        </DetailCard>
+      </ExperienceShell>
+    </Section>
   );
 };
 

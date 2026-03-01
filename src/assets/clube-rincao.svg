@@ -1,0 +1,31 @@
+<svg width="1080" height="1080" viewBox="0 0 1080 1080" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <rect width="1080" height="1080" fill="#1552E6"/>
+  <path d="M0 0H1080V74C911 18 787 38 651 124C542 193 440 239 341 181C220 110 114 124 0 237V0Z" fill="#F0E800"/>
+  <path d="M0 915C123 971 211 1042 339 1079H0V915Z" fill="#F0E800"/>
+  <path d="M735 979C827 919 906 914 980 981C1011 1009 1040 1040 1080 1080H636C664 1048 691 1015 735 979Z" fill="#F0E800"/>
+  <path d="M0 786C148 692 276 707 397 803C483 871 556 926 657 885C727 857 787 874 848 930C916 992 989 1018 1080 963V1080H0V786Z" fill="#F0E800"/>
+  <path d="M0 148C109 84 206 108 292 206C369 294 432 332 502 294C576 254 622 186 602 92C595 58 595 28 606 0H1080V302C1012 291 949 253 866 194C774 128 693 72 611 50C518 25 432 42 372 104C323 155 281 219 217 220C140 221 72 189 0 148Z" fill="#F0E800"/>
+  <g filter="url(#shadow)">
+    <rect x="150" y="308" width="780" height="464" rx="170" fill="#1552E6"/>
+  </g>
+  <g filter="url(#textShadow)">
+    <text x="540" y="445" text-anchor="middle" fill="#6A4424" font-family="Arial, sans-serif" font-weight="900" font-size="78" stroke="white" stroke-width="10" paint-order="stroke">
+      Clube e Park
+    </text>
+    <text x="540" y="595" text-anchor="middle" fill="#B68145" font-family="Arial Black, Arial, sans-serif" font-weight="900" font-size="184" letter-spacing="4" stroke="white" stroke-width="16" paint-order="stroke">
+      RINCÃO
+    </text>
+    <text x="540" y="700" text-anchor="middle" fill="#8E5D31" font-family="Arial, sans-serif" font-weight="900" font-size="86" stroke="white" stroke-width="11" paint-order="stroke">
+      Pousada e Lazer
+    </text>
+  </g>
+  <defs>
+    <filter id="shadow" x="110" y="278" width="860" height="544" filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB">
+      <feDropShadow dx="0" dy="18" stdDeviation="24" flood-color="black" flood-opacity="0.28"/>
+    </filter>
+    <filter id="textShadow" x="110" y="330" width="860" height="430" filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB">
+      <feDropShadow dx="0" dy="14" stdDeviation="10" flood-color="white" flood-opacity="0.28"/>
+      <feDropShadow dx="0" dy="18" stdDeviation="18" flood-color="black" flood-opacity="0.16"/>
+    </filter>
+  </defs>
+</svg>
