@@ -1,11 +1,25 @@
 import { cn } from "@/lib/utils";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { Button } from "./button";
-import { motion, useMotionValue, useTransform } from "framer-motion";
+import { animate, motion, useMotionValue, useTransform } from "framer-motion";
 
 export const AnimatedThemeToggle = ({ className }: { className?: string }) => {
-  const [theme, setTheme] = useState("light");
+  const [theme, setTheme] = useState<"light" | "dark">(() => {
+    if (typeof window === "undefined") return "dark";
+
+    const storedTheme = window.localStorage.getItem("theme");
+    if (storedTheme === "light" || storedTheme === "dark") {
+      return storedTheme;
+    }
+
+    return document.documentElement.classList.contains("dark") ? "dark" : "light";
+  });
   const isDark = theme === "dark";
+
+  useEffect(() => {
+    document.documentElement.classList.toggle("dark", isDark);
+    window.localStorage.setItem("theme", theme);
+  }, [isDark, theme]);
 
   return (
     <Button
@@ -42,6 +56,16 @@ const SolarSwitch = ({ isDark }: { isDark: boolean }) => {
   const scaleSun = useMotionValue(isDark ? 0 : 1);
   const pathLengthMoon = useTransform(scaleMoon, [0.6, 1], [0, 1]);
   const pathLengthSun = useTransform(scaleSun, [0.6, 1], [0, 1]);
+
+  useEffect(() => {
+    const moonControl = animate(scaleMoon, isDark ? 1 : 0, { duration });
+    const sunControl = animate(scaleSun, isDark ? 0 : 1, { duration });
+
+    return () => {
+      moonControl.stop();
+      sunControl.stop();
+    };
+  }, [duration, isDark, scaleMoon, scaleSun]);
 
   return (
     <motion.div animate={isDark ? "checked" : "unchecked"}>

@@ -164,7 +164,7 @@ const PortfolioSection = () => {
     <section
       id="portfolio"
       ref={sectionRef}
-      className="relative overflow-hidden bg-black/[0.96] px-6 py-24 lg:px-8"
+      className="relative overflow-hidden bg-background px-6 py-24 lg:px-8"
     >
       <motion.div
         className="absolute left-10 top-20 h-64 w-64 rounded-full bg-primary/5 blur-3xl"

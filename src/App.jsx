@@ -7,7 +7,7 @@ import Footer from "./components/Footer";
 
 const App = () => {
   return (
-    <div className="bg-black/[0.96] text-foreground">
+    <div className="bg-background text-foreground">
       <main className="transition-main">
         <HeroSection />
         <PortfolioSection />

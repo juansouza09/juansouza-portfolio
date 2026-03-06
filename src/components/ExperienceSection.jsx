@@ -112,7 +112,7 @@ const ExperienceSection = () => {
     <section
       id="experience"
       ref={sectionRef}
-      className="relative w-full overflow-hidden bg-black/[0.96] px-6 py-24 lg:px-8"
+      className="relative w-full overflow-hidden bg-background px-6 py-24 lg:px-8"
     >
       <motion.div
         className="absolute left-10 top-20 h-72 w-72 rounded-full bg-primary/5 blur-3xl"

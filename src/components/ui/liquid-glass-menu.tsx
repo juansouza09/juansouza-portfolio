@@ -62,7 +62,7 @@ const InternalMenuItem: React.FC<MenuItemProps> = ({
       {isActive && (
         <motion.div
           layoutId="liquid-glass-active-pill"
-          className="absolute inset-0 rounded-full bg-white/95"
+          className="absolute inset-0 rounded-full bg-primary"
           transition={{
             type: 'spring',
             stiffness: 380,
@@ -74,7 +74,7 @@ const InternalMenuItem: React.FC<MenuItemProps> = ({
       <span
         className={cn(
           'relative z-10 transition-colors duration-300',
-          isActive ? 'text-black' : 'text-white/95',
+          isActive ? 'text-primary-foreground' : 'text-foreground/80',
         )}
       >
         {item.title}
@@ -163,7 +163,7 @@ export const LiquidGlassMenu: React.FC<LiquidGlassMenuProps> = ({
 
   return (
     <nav className={cn('relative flex max-w-full', className)}>
-      <div className="relative flex w-full max-w-full items-center gap-0 overflow-x-auto rounded-full border border-white/30 bg-white/10 p-1 shadow-[0_8px_30px_rgba(0,0,0,0.35)] backdrop-blur-xl [scrollbar-width:none] [-ms-overflow-style:none] [&::-webkit-scrollbar]:hidden sm:w-auto sm:p-1.5">
+      <div className="relative flex w-full max-w-full items-center gap-0 overflow-x-auto rounded-full border border-border/70 bg-background/75 p-1 shadow-[0_8px_30px_rgba(0,0,0,0.18)] backdrop-blur-xl [scrollbar-width:none] [-ms-overflow-style:none] [&::-webkit-scrollbar]:hidden sm:w-auto sm:p-1.5 dark:shadow-[0_8px_30px_rgba(0,0,0,0.35)]">
         {items.map((item, index) => (
           <InternalMenuItem
             key={`${item.title}-${index}`}

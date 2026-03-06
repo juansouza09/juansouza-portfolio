@@ -6,6 +6,43 @@
 
 @layer base {
   :root {
+    --background: 0 0% 98%;
+    --foreground: 0 0% 12%;
+
+    --card: 0 0% 100%;
+    --card-foreground: 0 0% 12%;
+
+    --popover: 0 0% 100%;
+    --popover-foreground: 0 0% 12%;
+
+    --primary: 0 0% 14%;
+    --primary-foreground: 0 0% 98%;
+
+    --secondary: 0 0% 94%;
+    --secondary-foreground: 0 0% 20%;
+
+    --muted: 0 0% 92%;
+    --muted-foreground: 0 0% 40%;
+
+    --accent: 0 0% 90%;
+    --accent-foreground: 0 0% 14%;
+
+    --destructive: 0 84.2% 60.2%;
+    --destructive-foreground: 210 40% 98%;
+
+    --border: 0 0% 84%;
+    --input: 0 0% 86%;
+    --ring: 0 0% 35%;
+
+    --radius: 1rem;
+
+    --gradient-orange: linear-gradient(180deg, hsl(0 0% 92%) 0%, hsl(0 0% 84%) 100%);
+
+    --font-display: 'Playfair Display', serif;
+    --font-body: 'Inter', sans-serif;
+  }
+
+  :root.dark {
     --background: 0 0% 5%;
     --foreground: 0 0% 96%;
 
@@ -34,12 +71,7 @@
     --input: 0 0% 18%;
     --ring: 0 0% 75%;
 
-    --radius: 1rem;
-
     --gradient-orange: linear-gradient(180deg, hsl(0 0% 22%) 0%, hsl(0 0% 10%) 100%);
-
-    --font-display: 'Playfair Display', serif;
-    --font-body: 'Inter', sans-serif;
   }
 }
 
@@ -396,6 +428,39 @@ html.is-animating.is-leaving .transition-main {
 .ui-anim-btn:disabled {
   opacity: 0.6;
   cursor: not-allowed;
+}
+
+.ui-anim-btn-minimal .ui-anim-letter {
+  color: hsl(var(--foreground) / 0.78);
+}
+
+.ui-anim-btn-minimal:hover,
+.ui-anim-btn-minimal:focus-visible {
+  border-color: hsl(var(--primary) / 0.6);
+  background-color: hsl(var(--accent));
+}
+
+.ui-anim-btn-minimal:hover .ui-anim-letter,
+.ui-anim-btn-minimal:focus-visible .ui-anim-letter,
+.ui-anim-btn-minimal:active .ui-anim-letter {
+  color: hsl(var(--foreground));
+  text-shadow: none;
+}
+
+.ui-anim-btn-minimal:active {
+  border-color: hsl(var(--primary));
+  background-color: hsl(var(--accent));
+}
+
+.dark .ui-anim-btn-minimal .ui-anim-letter {
+  color: #ffffff88;
+}
+
+.dark .ui-anim-btn-minimal:hover .ui-anim-letter,
+.dark .ui-anim-btn-minimal:focus-visible .ui-anim-letter,
+.dark .ui-anim-btn-minimal:active .ui-anim-letter {
+  color: #fff;
+  text-shadow: 0 0 3px #fff8;
 }
 
 @layer utilities {

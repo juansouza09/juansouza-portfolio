@@ -74,8 +74,9 @@ export default function AnimatedGenerateButton({
           "relative flex cursor-pointer select-none items-center justify-center rounded-[24px] px-4 py-2",
           minimal
             ? [
-                "ui-anim-btn-minimal border border-white/35 bg-transparent text-white shadow-none",
-                "transition-[border,background-color] duration-300 hover:bg-white/10 hover:border-white/55",
+                "ui-anim-btn-minimal border border-border bg-transparent text-foreground shadow-none",
+                "transition-[border,background-color] duration-300 hover:bg-accent hover:border-primary",
+                "dark:border-white/35 dark:text-white dark:hover:bg-white/10 dark:hover:border-white/55",
                 "[&::before]:hidden [&::after]:hidden",
               ]
             : [

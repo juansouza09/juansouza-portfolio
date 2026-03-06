@@ -15,7 +15,7 @@ const HeroSection = () => {
 
   return (
     <section id="home" className="relative min-h-[100svh] overflow-hidden bg-card">
-      <Card className="relative min-h-[100svh] w-full overflow-hidden rounded-none border-0 bg-black/[0.96] shadow-none">
+      <Card className="relative min-h-[100svh] w-full overflow-hidden rounded-none border-0 bg-background shadow-none">
         <Spotlight className="-top-40 left-0 md:left-60 md:-top-20" fill="white" />
 
         <div className="absolute inset-y-0 right-0 z-[2] w-full overflow-hidden sm:w-[78%] md:w-[60%] lg:w-[48%]">
@@ -30,8 +30,8 @@ const HeroSection = () => {
         </div>
 
         <div className="pointer-events-none absolute inset-y-0 left-0 z-[3] w-full sm:w-[78%] md:w-[66%] lg:w-[62%]" />
-        <div className="pointer-events-none absolute inset-0 z-[4] bg-gradient-to-r from-black/88 via-black/64 to-black/24 sm:from-black/86 sm:via-black/58 sm:to-black/22 lg:from-black/84 lg:via-black/54 lg:to-black/20" />
-        <div className="pointer-events-none absolute inset-0 z-[4] bg-[radial-gradient(circle_at_78%_42%,rgba(0,0,0,0.48)_0%,rgba(0,0,0,0.56)_28%,rgba(0,0,0,0.64)_56%,rgba(0,0,0,0.74)_100%)] sm:bg-[radial-gradient(circle_at_78%_42%,rgba(0,0,0,0.42)_0%,rgba(0,0,0,0.5)_24%,rgba(0,0,0,0.6)_52%,rgba(0,0,0,0.72)_100%)]" />
+        <div className="pointer-events-none absolute inset-0 z-[4] bg-gradient-to-r from-background/95 via-background/78 to-background/42 dark:from-black/88 dark:via-black/64 dark:to-black/24 sm:dark:from-black/86 sm:dark:via-black/58 sm:dark:to-black/22 lg:dark:from-black/84 lg:dark:via-black/54 lg:dark:to-black/20" />
+        <div className="pointer-events-none absolute inset-0 z-[4] bg-gradient-to-r from-transparent via-background/25 to-background/55 dark:via-black/22 dark:to-black/52" />
 
         <div className="pointer-events-none relative z-10 flex min-h-[100svh] flex-col p-4 pb-8 sm:p-6 sm:pb-10 lg:p-10">
           <nav className="pointer-events-auto mb-5 flex items-center gap-2 sm:mb-8">
@@ -56,13 +56,13 @@ const HeroSection = () => {
             onMouseLeave={() => setIsTextBlockHovered(false)}
           >
             <div className="mb-6 sm:mb-8">
-              <p className="text-[11px] font-medium uppercase tracking-widest text-neutral-300 sm:text-xs">
+              <p className="text-[11px] font-medium uppercase tracking-widest text-muted-foreground sm:text-xs">
                 Juan Souza - Software Engineer
               </p>
             </div>
 
             <div className="my-[10px]">
-              <p className="my-[10px] inline-flex rounded-full border border-white/20 bg-white/10 px-3 py-1 text-[11px] font-semibold tracking-wide text-white/90 backdrop-blur-sm sm:text-xs">
+              <p className="my-[10px] inline-flex rounded-full border border-border bg-card/80 px-3 py-1 text-[11px] font-semibold tracking-wide text-foreground backdrop-blur-sm sm:text-xs">
                 +4 anos solucionando problemas
               </p>
 
@@ -72,12 +72,12 @@ const HeroSection = () => {
                 preset="slide"
                 delay={0.15}
                 segmentWrapperClassName="block overflow-hidden"
-                className="my-[10px] font-display text-[clamp(2.2rem,10vw,4.8rem)] font-medium leading-[1.04] text-white sm:text-5xl lg:text-6xl xl:text-7xl"
+                className="my-[10px] font-display text-[clamp(2.2rem,10vw,4.8rem)] font-medium leading-[1.04] text-foreground sm:text-5xl lg:text-6xl xl:text-7xl"
               >
                 {`Transformando problemas\nem software`}
               </TextEffect>
 
-              <p className="my-[10px] max-w-xl text-[15px] leading-relaxed text-neutral-200 sm:text-sm">
+              <p className="my-[10px] max-w-xl text-[15px] leading-relaxed text-muted-foreground sm:text-sm">
                 Construo produtos, sistemas e automações usados no dia a dia de empresas.
               </p>
 
@@ -85,7 +85,7 @@ const HeroSection = () => {
                 {tags.map((tag) => (
                   <span
                     key={tag}
-                    className="rounded-full border border-white/20 bg-black/30 px-2.5 py-1.5 text-[11px] font-medium text-neutral-100 backdrop-blur-sm sm:px-3 sm:text-xs"
+                    className="rounded-full border border-border bg-card/70 px-2.5 py-1.5 text-[11px] font-medium text-foreground backdrop-blur-sm sm:px-3 sm:text-xs"
                   >
                     {tag}
                   </span>
@@ -97,13 +97,13 @@ const HeroSection = () => {
           <div className="pointer-events-auto mt-6 mb-8 flex flex-col items-stretch gap-6 sm:mt-8 sm:mb-10 sm:flex-row sm:flex-wrap sm:items-center">
             <a
               href="#portfolio"
-              className="inline-flex h-[42px] w-full items-center justify-center rounded-2xl border border-white/35 bg-transparent px-5 text-sm font-medium text-white transition-colors hover:border-white hover:bg-white/8 sm:w-auto"
+              className="inline-flex h-[42px] w-full items-center justify-center rounded-2xl border border-border/80 bg-card/80 px-5 text-sm font-medium text-foreground shadow-sm backdrop-blur-sm transition-colors hover:border-primary/60 hover:bg-accent sm:w-auto dark:border-white/35 dark:bg-transparent dark:text-white dark:hover:border-white dark:hover:bg-white/10"
             >
               Explorar projetos
             </a>
             <AnimatedGenerateButton
               className="w-full sm:w-auto"
-              buttonClassName="h-[42px] w-full rounded-2xl px-5 text-sm font-medium sm:w-auto"
+              buttonClassName="h-[42px] w-full rounded-2xl border-border/80 bg-card/80 px-5 text-sm font-medium text-foreground shadow-sm backdrop-blur-sm hover:border-primary/60 hover:bg-accent sm:w-auto dark:border-white/35 dark:bg-transparent dark:text-white dark:hover:border-white dark:hover:bg-white/10"
               labelIdle="Conversar sobre um projeto"
               labelActive="Abrindo contato"
               ariaLabel="Conversar sobre um projeto"

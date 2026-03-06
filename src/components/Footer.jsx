@@ -2,7 +2,7 @@ import { Github, Linkedin } from "lucide-react";
 
 const Footer = () => {
   return (
-    <footer className="bg-black/[0.96] px-6 py-10 lg:px-8">
+    <footer className="bg-background px-6 py-10 lg:px-8">
       <div className="mx-auto w-full max-w-6xl border-t border-border pt-6 text-sm text-muted-foreground">
         <div className="flex flex-col items-start justify-between gap-4 md:flex-row md:items-center">
           <p>Juan Souza — Software Engineer</p>

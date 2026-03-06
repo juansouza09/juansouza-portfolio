@@ -53,7 +53,7 @@ const EducationSection = () => {
     <section
       id="education"
       ref={sectionRef}
-      className="relative w-full overflow-hidden bg-black/[0.96] px-6 py-24 lg:px-8"
+      className="relative w-full overflow-hidden bg-background px-6 py-24 lg:px-8"
     >
       <motion.div
         className="absolute right-10 top-32 h-72 w-72 rounded-full bg-primary/5 blur-3xl"

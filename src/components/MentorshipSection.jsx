@@ -78,7 +78,7 @@ const MentorshipSection = () => {
     <section
       id="mentorship"
       ref={sectionRef}
-      className="relative w-full overflow-hidden bg-black/[0.96] px-6 py-24 lg:px-8"
+      className="relative w-full overflow-hidden bg-background px-6 py-24 lg:px-8"
     >
       <motion.div
         className="absolute left-20 top-32 h-80 w-80 rounded-full bg-primary/5 blur-3xl"
@@ -179,7 +179,7 @@ const MentorshipSection = () => {
               <div className="absolute -inset-4 rounded-3xl bg-gradient-to-r from-primary/20 via-primary/10 to-primary/20 blur-2xl" />
               <div className="relative overflow-hidden rounded-3xl border border-border shadow-2xl">
                 <img src={mentorImage} alt="Juan Souza" className="h-[500px] w-full object-cover" />
-                <div className="absolute inset-0 bg-gradient-to-t from-background/90 via-background/15 to-transparent" />
+                <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/30 to-transparent" />
                 <div className="absolute bottom-0 left-0 right-0 p-8">
                   <h3 className="text-2xl font-semibold text-white">Juan Souza</h3>
                   <p className="mt-1 text-white/80">Software Engineer</p>
