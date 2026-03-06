@@ -164,7 +164,7 @@ const HeroSection = () => {
           <div ref={splineLayerRef} className="absolute inset-0 z-[2] overflow-hidden">
             <SplineScene
               scene="https://prod.spline.design/kZDDjO5HuC9GJUM2/scene.splinecode"
-              className="absolute inset-0 h-full w-full origin-center scale-[0.95] translate-x-[12%] pointer-events-auto opacity-[0.54] transition-all duration-300 ease-out sm:scale-[0.88] sm:translate-x-[16%] sm:opacity-[0.8] lg:scale-[0.9] lg:translate-x-[22%]"
+              className="absolute inset-0 h-full w-full origin-center scale-[0.95] translate-x-[12%] pointer-events-auto opacity-[0.54] transition-all duration-300 ease-out sm:scale-[0.88] sm:translate-x-[16%] sm:opacity-[0.8] lg:scale-[0.9] lg:translate-x-[22%] lg:translate-y-[14%]"
             />
           </div>
         ) : null}
