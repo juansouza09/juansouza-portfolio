@@ -4,11 +4,11 @@ import { motion, useInView, useScroll, useTransform } from "framer-motion";
 import { ExternalLink, Sparkles } from "lucide-react";
 import { cva } from "class-variance-authority";
 import { cn } from "@/lib/utils";
-import clubeRincaoCarousel from "../assets/clube-rincao-carousel.png";
-import santaRochaImg from "../assets/santa-rocha.png";
-import bphCarousel from "../assets/bph-carousel.png";
-import janoCarousel from "../assets/jano-carousel.png";
-import morfCarousel from "../assets/morf-carousel.png";
+import clubeRincaoCarousel from "../assets/clube-rincao-carousel.webp";
+import santaRochaImg from "../assets/santa-rocha.webp";
+import bphCarousel from "../assets/bph-carousel.webp";
+import janoCarousel from "../assets/jano-carousel.webp";
+import morfCarousel from "../assets/morf-carousel.webp";
 
 const glowVariants = cva("absolute inset-x-0 w-full pointer-events-none", {
   variants: {

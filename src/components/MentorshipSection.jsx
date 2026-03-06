@@ -11,7 +11,7 @@ import {
   CheckCircle2,
 } from "lucide-react";
 import { Button } from "@/components/ui/button";
-import mentorImage from "../assets/juan-image.jpeg";
+import mentorImage from "../assets/juan-image.webp";
 
 const benefits = [
   {

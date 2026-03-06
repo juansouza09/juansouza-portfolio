@@ -1,6 +1,6 @@
 import mobileImg from "../assets/mobile.png";
 import morfImg from "../assets/morf-image.jpg";
-import santaRochaImg from "../assets/santa-rocha.png";
+import santaRochaImg from "../assets/santa-rocha.webp";
 
 const services = [
   {
