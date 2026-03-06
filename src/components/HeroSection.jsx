@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react'
+import { useEffect, useRef, useState } from 'react'
 import { TextEffect } from '@/components/ui/text-effect'
 import AnimatedGenerateButton from '@/components/ui/animated-generate-button-shadcn-tailwind'
 import { Card } from '@/components/ui/card'
@@ -11,7 +11,8 @@ const tags = ['Apps', 'Sistemas internos', 'Automação', 'IA aplicada', 'Integr
 const projectContactLink = 'https://w.app/juansouza'
 
 const HeroSection = () => {
-  const [isTextBlockHovered, setIsTextBlockHovered] = useState(false)
+  const heroRef = useRef(null)
+  const splineLayerRef = useRef(null)
   const [shouldRenderSpline, setShouldRenderSpline] = useState(() => {
     if (typeof window === 'undefined') return false
     return window.matchMedia('(min-width: 1024px)').matches
@@ -37,20 +38,133 @@ const HeroSection = () => {
     }
   }, [])
 
+  useEffect(() => {
+    if (!shouldRenderSpline) return
+
+    const heroElement = heroRef.current
+    if (!heroElement) return
+
+    let wasInsideHero = false
+    let rafId = null
+    let lastEvent = null
+    let cachedCanvas = null
+
+    const getCanvas = () => {
+      if (cachedCanvas && document.contains(cachedCanvas)) return cachedCanvas
+      cachedCanvas = splineLayerRef.current?.querySelector('canvas') ?? null
+      return cachedCanvas
+    }
+
+    const dispatchMouseMove = (event) => {
+      const canvas = getCanvas()
+      if (!canvas) return
+
+      const mouseInit = {
+        bubbles: true,
+        cancelable: false,
+        composed: true,
+        clientX: event.clientX,
+        clientY: event.clientY,
+        screenX: event.screenX,
+        screenY: event.screenY,
+        ctrlKey: event.ctrlKey,
+        shiftKey: event.shiftKey,
+        altKey: event.altKey,
+        metaKey: event.metaKey,
+        button: event.button ?? 0,
+        buttons: event.buttons ?? 0,
+      }
+
+      if (typeof PointerEvent !== 'undefined') {
+        canvas.dispatchEvent(
+          new PointerEvent('pointermove', {
+            ...mouseInit,
+            pointerId: event.pointerId ?? 1,
+            pointerType: event.pointerType ?? 'mouse',
+            isPrimary: event.isPrimary ?? true,
+            pressure: event.pressure ?? 0,
+          }),
+        )
+      }
+
+      canvas.dispatchEvent(new MouseEvent('mousemove', mouseInit))
+    }
+
+    const dispatchMouseLeave = () => {
+      const canvas = getCanvas()
+      if (!canvas) return
+
+      if (typeof PointerEvent !== 'undefined') {
+        canvas.dispatchEvent(
+          new PointerEvent('pointerleave', {
+            bubbles: true,
+            cancelable: false,
+            composed: true,
+            pointerId: 1,
+            pointerType: 'mouse',
+            isPrimary: true,
+          }),
+        )
+      }
+
+      canvas.dispatchEvent(
+        new MouseEvent('mouseleave', {
+          bubbles: true,
+          cancelable: false,
+          composed: true,
+        }),
+      )
+    }
+
+    const flushPointer = () => {
+      rafId = null
+      if (!lastEvent) return
+
+      const event = lastEvent
+      lastEvent = null
+
+      const rect = heroElement.getBoundingClientRect()
+      const isInsideHero =
+        event.clientX >= rect.left &&
+        event.clientX <= rect.right &&
+        event.clientY >= rect.top &&
+        event.clientY <= rect.bottom
+
+      if (isInsideHero) {
+        dispatchMouseMove(event)
+      } else if (wasInsideHero) {
+        dispatchMouseLeave()
+      }
+
+      wasInsideHero = isInsideHero
+    }
+
+    const handleGlobalPointerMove = (event) => {
+      lastEvent = event
+      if (rafId !== null) return
+      rafId = window.requestAnimationFrame(flushPointer)
+    }
+
+    window.addEventListener('pointermove', handleGlobalPointerMove, { passive: true })
+
+    return () => {
+      window.removeEventListener('pointermove', handleGlobalPointerMove)
+      if (rafId !== null) {
+        window.cancelAnimationFrame(rafId)
+      }
+    }
+  }, [shouldRenderSpline])
+
   return (
-    <section id="home" className="relative min-h-[100svh] overflow-hidden bg-card">
+    <section id="home" ref={heroRef} className="relative min-h-[100svh] overflow-hidden bg-card">
       <Card className="relative min-h-[100svh] w-full overflow-hidden rounded-none border-0 bg-background shadow-none">
         <Spotlight className="-top-40 left-0 md:left-60 md:-top-20" fill="white" />
 
         {shouldRenderSpline ? (
-          <div className="absolute inset-y-0 right-0 z-[2] w-full overflow-hidden sm:w-[78%] md:w-[60%] lg:w-[48%]">
+          <div ref={splineLayerRef} className="absolute inset-0 z-[2] overflow-hidden">
             <SplineScene
               scene="https://prod.spline.design/kZDDjO5HuC9GJUM2/scene.splinecode"
-              className={`absolute inset-0 h-full w-full origin-center scale-[0.95] translate-x-[12%] transition-all duration-300 ease-out sm:scale-[0.88] sm:translate-x-[16%] lg:scale-[0.9] lg:translate-x-[14%] ${
-                isTextBlockHovered
-                  ? 'pointer-events-none opacity-[0.44] sm:opacity-[0.64]'
-                  : 'pointer-events-auto opacity-[0.54] sm:opacity-[0.8]'
-              }`}
+              className="absolute inset-0 h-full w-full origin-center scale-[0.95] translate-x-[12%] pointer-events-auto opacity-[0.54] transition-all duration-300 ease-out sm:scale-[0.88] sm:translate-x-[16%] sm:opacity-[0.8] lg:scale-[0.9] lg:translate-x-[22%]"
             />
           </div>
         ) : null}
@@ -76,11 +190,7 @@ const HeroSection = () => {
             <AnimatedThemeToggle />
           </nav>
 
-          <div
-            className="pointer-events-auto mt-4 w-[92%] max-w-[22rem] sm:mt-10 sm:w-auto sm:max-w-3xl md:mt-24 lg:mt-24"
-            onMouseEnter={() => setIsTextBlockHovered(true)}
-            onMouseLeave={() => setIsTextBlockHovered(false)}
-          >
+          <div className="pointer-events-none mt-4 w-[92%] max-w-[22rem] sm:mt-10 sm:w-auto sm:max-w-3xl md:mt-24 lg:mt-24">
             <div className="mb-6 sm:mb-8">
               <p className="text-[11px] font-medium uppercase tracking-widest text-muted-foreground sm:text-xs">
                 Juan Souza - Software Engineer
