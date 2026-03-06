@@ -463,6 +463,20 @@ html.is-animating.is-leaving .transition-main {
   text-shadow: 0 0 3px #fff8;
 }
 
+@media (max-width: 767px) {
+  .ui-anim-btn::before,
+  .ui-anim-btn::after {
+    display: none;
+  }
+
+  .ui-anim-letter,
+  .ui-anim-btn-svg {
+    animation: none !important;
+    text-shadow: none;
+    filter: none;
+  }
+}
+
 @layer utilities {
   .loader {
     width: 28px;

@@ -81,11 +81,11 @@ const MentorshipSection = () => {
       className="relative w-full overflow-hidden bg-background px-6 py-24 lg:px-8"
     >
       <motion.div
-        className="absolute left-20 top-32 h-80 w-80 rounded-full bg-primary/5 blur-3xl"
+        className="absolute left-20 top-32 h-80 w-80 rounded-full bg-primary/5 blur-xl md:blur-3xl"
         style={{ y: y1 }}
       />
       <motion.div
-        className="absolute bottom-32 right-20 h-96 w-96 rounded-full bg-primary/10 blur-3xl"
+        className="absolute bottom-32 right-20 h-96 w-96 rounded-full bg-primary/10 blur-xl md:blur-3xl"
         style={{ y: y2 }}
       />
 
@@ -176,18 +176,18 @@ const MentorshipSection = () => {
 
           <motion.div variants={itemVariants}>
             <div className="relative">
-              <div className="absolute -inset-4 rounded-3xl bg-gradient-to-r from-primary/20 via-primary/10 to-primary/20 blur-2xl" />
-              <div className="relative overflow-hidden rounded-3xl border border-border shadow-2xl">
+              <div className="absolute -inset-4 rounded-3xl bg-gradient-to-r from-primary/20 via-primary/10 to-primary/20 blur-lg md:blur-2xl" />
+              <div className="relative overflow-hidden rounded-3xl border border-border shadow-lg md:shadow-2xl">
                 <img src={mentorImage} alt="Juan Souza" className="h-[500px] w-full object-cover" />
                 <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/30 to-transparent" />
                 <div className="absolute bottom-0 left-0 right-0 p-8">
                   <h3 className="text-2xl font-semibold text-white">Juan Souza</h3>
                   <p className="mt-1 text-white/80">Software Engineer</p>
                   <div className="mt-3 flex flex-wrap gap-2">
-                    <span className="rounded-full bg-white/10 px-3 py-1 text-sm text-white backdrop-blur-sm">
+                    <span className="rounded-full bg-white/10 px-3 py-1 text-sm text-white backdrop-blur-none md:backdrop-blur-sm">
                       +4 anos de experiência
                     </span>
-                    <span className="rounded-full bg-white/10 px-3 py-1 text-sm text-white backdrop-blur-sm">
+                    <span className="rounded-full bg-white/10 px-3 py-1 text-sm text-white backdrop-blur-none md:backdrop-blur-sm">
                       Produto, IA e Mobile
                     </span>
                   </div>

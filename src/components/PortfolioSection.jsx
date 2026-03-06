@@ -25,8 +25,8 @@ const glowVariants = cva("absolute inset-x-0 w-full pointer-events-none", {
 const Glow = ({ className, variant = "above" }) => {
   return (
     <div className={cn(glowVariants({ variant }), className)}>
-      <div className="absolute left-1/2 h-64 w-2/3 -translate-x-1/2 rounded-full bg-primary/20 blur-3xl" />
-      <div className="absolute left-1/2 top-12 h-32 w-1/2 -translate-x-1/2 rounded-full bg-primary/15 blur-2xl" />
+      <div className="absolute left-1/2 h-64 w-2/3 -translate-x-1/2 rounded-full bg-primary/20 blur-xl md:blur-3xl" />
+      <div className="absolute left-1/2 top-12 h-32 w-1/2 -translate-x-1/2 rounded-full bg-primary/15 blur-lg md:blur-2xl" />
     </div>
   );
 };
@@ -34,14 +34,14 @@ const Glow = ({ className, variant = "above" }) => {
 const ProjectCard = ({ imgSrc, title, tags, description, link, linkText }) => {
   return (
     <motion.article
-      className="group relative flex h-full flex-col overflow-hidden rounded-3xl border border-border/70 bg-card text-card-foreground shadow-[0_16px_36px_rgba(17,17,17,0.08)] transition-all duration-300 hover:-translate-y-1 hover:border-primary/20 hover:shadow-[0_22px_46px_rgba(17,17,17,0.12)]"
+      className="group relative flex h-full flex-col overflow-hidden rounded-3xl border border-border/70 bg-card text-card-foreground shadow-sm transition-all duration-300 md:shadow-[0_16px_36px_rgba(17,17,17,0.08)] md:hover:-translate-y-1 md:hover:border-primary/20 md:hover:shadow-[0_22px_46px_rgba(17,17,17,0.12)]"
       whileHover={{ y: -4 }}
     >
       <div className="aspect-[16/10] overflow-hidden bg-muted">
         <img
           src={imgSrc}
           alt={title}
-          className="h-full w-full object-cover transition-transform duration-700 ease-in-out group-hover:scale-105"
+          className="h-full w-full object-cover transition-transform duration-300 ease-in-out md:duration-700 md:group-hover:scale-105"
           loading="lazy"
         />
       </div>
@@ -167,11 +167,11 @@ const PortfolioSection = () => {
       className="relative overflow-hidden bg-background px-6 py-24 lg:px-8"
     >
       <motion.div
-        className="absolute left-10 top-20 h-64 w-64 rounded-full bg-primary/5 blur-3xl"
+        className="absolute left-10 top-20 h-64 w-64 rounded-full bg-primary/5 blur-xl md:blur-3xl"
         style={{ y: y1 }}
       />
       <motion.div
-        className="absolute bottom-20 right-10 h-80 w-80 rounded-full bg-primary/10 blur-3xl"
+        className="absolute bottom-20 right-10 h-80 w-80 rounded-full bg-primary/10 blur-xl md:blur-3xl"
         style={{ y: y2 }}
       />
 

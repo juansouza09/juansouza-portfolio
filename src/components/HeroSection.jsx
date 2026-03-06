@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 import { TextEffect } from '@/components/ui/text-effect'
 import AnimatedGenerateButton from '@/components/ui/animated-generate-button-shadcn-tailwind'
 import { Card } from '@/components/ui/card'
@@ -12,22 +12,48 @@ const projectContactLink = 'https://w.app/juansouza'
 
 const HeroSection = () => {
   const [isTextBlockHovered, setIsTextBlockHovered] = useState(false)
+  const [shouldRenderSpline, setShouldRenderSpline] = useState(() => {
+    if (typeof window === 'undefined') return false
+    return window.matchMedia('(min-width: 1024px)').matches
+  })
+
+  useEffect(() => {
+    const mediaQuery = window.matchMedia('(min-width: 1024px)')
+    const updateSplineVisibility = () => setShouldRenderSpline(mediaQuery.matches)
+
+    updateSplineVisibility()
+    if (mediaQuery.addEventListener) {
+      mediaQuery.addEventListener('change', updateSplineVisibility)
+    } else {
+      mediaQuery.addListener(updateSplineVisibility)
+    }
+
+    return () => {
+      if (mediaQuery.removeEventListener) {
+        mediaQuery.removeEventListener('change', updateSplineVisibility)
+      } else {
+        mediaQuery.removeListener(updateSplineVisibility)
+      }
+    }
+  }, [])
 
   return (
     <section id="home" className="relative min-h-[100svh] overflow-hidden bg-card">
       <Card className="relative min-h-[100svh] w-full overflow-hidden rounded-none border-0 bg-background shadow-none">
         <Spotlight className="-top-40 left-0 md:left-60 md:-top-20" fill="white" />
 
-        <div className="absolute inset-y-0 right-0 z-[2] w-full overflow-hidden sm:w-[78%] md:w-[60%] lg:w-[48%]">
-          <SplineScene
-            scene="https://prod.spline.design/kZDDjO5HuC9GJUM2/scene.splinecode"
-            className={`absolute inset-0 h-full w-full origin-center scale-[0.95] translate-x-[12%] transition-all duration-300 ease-out sm:scale-[0.88] sm:translate-x-[16%] lg:scale-[0.9] lg:translate-x-[14%] ${
-              isTextBlockHovered
-                ? 'pointer-events-none opacity-[0.44] sm:opacity-[0.64]'
-                : 'pointer-events-auto opacity-[0.54] sm:opacity-[0.8]'
-            }`}
-          />
-        </div>
+        {shouldRenderSpline ? (
+          <div className="absolute inset-y-0 right-0 z-[2] w-full overflow-hidden sm:w-[78%] md:w-[60%] lg:w-[48%]">
+            <SplineScene
+              scene="https://prod.spline.design/kZDDjO5HuC9GJUM2/scene.splinecode"
+              className={`absolute inset-0 h-full w-full origin-center scale-[0.95] translate-x-[12%] transition-all duration-300 ease-out sm:scale-[0.88] sm:translate-x-[16%] lg:scale-[0.9] lg:translate-x-[14%] ${
+                isTextBlockHovered
+                  ? 'pointer-events-none opacity-[0.44] sm:opacity-[0.64]'
+                  : 'pointer-events-auto opacity-[0.54] sm:opacity-[0.8]'
+              }`}
+            />
+          </div>
+        ) : null}
 
         <div className="pointer-events-none absolute inset-y-0 left-0 z-[3] w-full sm:w-[78%] md:w-[66%] lg:w-[62%]" />
         <div className="pointer-events-none absolute inset-0 z-[4] bg-gradient-to-r from-background/95 via-background/78 to-background/42 dark:from-black/88 dark:via-black/64 dark:to-black/24 sm:dark:from-black/86 sm:dark:via-black/58 sm:dark:to-black/22 lg:dark:from-black/84 lg:dark:via-black/54 lg:dark:to-black/20" />
@@ -62,7 +88,7 @@ const HeroSection = () => {
             </div>
 
             <div className="my-[10px]">
-              <p className="my-[10px] inline-flex rounded-full border border-border bg-card/80 px-3 py-1 text-[11px] font-semibold tracking-wide text-foreground backdrop-blur-sm sm:text-xs">
+              <p className="my-[10px] inline-flex rounded-full border border-border bg-card/80 px-3 py-1 text-[11px] font-semibold tracking-wide text-foreground backdrop-blur-none md:backdrop-blur-sm sm:text-xs">
                 +4 anos solucionando problemas
               </p>
 
@@ -85,7 +111,7 @@ const HeroSection = () => {
                 {tags.map((tag) => (
                   <span
                     key={tag}
-                    className="rounded-full border border-border bg-card/70 px-2.5 py-1.5 text-[11px] font-medium text-foreground backdrop-blur-sm sm:px-3 sm:text-xs"
+                    className="rounded-full border border-border bg-card/70 px-2.5 py-1.5 text-[11px] font-medium text-foreground backdrop-blur-none md:backdrop-blur-sm sm:px-3 sm:text-xs"
                   >
                     {tag}
                   </span>
@@ -97,13 +123,13 @@ const HeroSection = () => {
           <div className="pointer-events-auto mt-6 mb-8 flex flex-col items-stretch gap-6 sm:mt-8 sm:mb-10 sm:flex-row sm:flex-wrap sm:items-center">
             <a
               href="#portfolio"
-              className="inline-flex h-[42px] w-full items-center justify-center rounded-2xl border border-border/80 bg-card/80 px-5 text-sm font-medium text-foreground shadow-sm backdrop-blur-sm transition-colors hover:border-primary/60 hover:bg-accent sm:w-auto dark:border-white/35 dark:bg-transparent dark:text-white dark:hover:border-white dark:hover:bg-white/10"
+              className="inline-flex h-[42px] w-full items-center justify-center rounded-2xl border border-border/80 bg-card/80 px-5 text-sm font-medium text-foreground shadow-none backdrop-blur-none transition-colors md:shadow-sm md:backdrop-blur-sm hover:border-primary/60 hover:bg-accent sm:w-auto dark:border-white/35 dark:bg-transparent dark:text-white dark:hover:border-white dark:hover:bg-white/10"
             >
               Explorar projetos
             </a>
             <AnimatedGenerateButton
               className="w-full sm:w-auto"
-              buttonClassName="h-[42px] w-full rounded-2xl border-border/80 bg-card/80 px-5 text-sm font-medium text-foreground shadow-sm backdrop-blur-sm hover:border-primary/60 hover:bg-accent sm:w-auto dark:border-white/35 dark:bg-transparent dark:text-white dark:hover:border-white dark:hover:bg-white/10"
+              buttonClassName="h-[42px] w-full rounded-2xl border-border/80 bg-card/80 px-5 text-sm font-medium text-foreground shadow-none backdrop-blur-none md:shadow-sm md:backdrop-blur-sm hover:border-primary/60 hover:bg-accent sm:w-auto dark:border-white/35 dark:bg-transparent dark:text-white dark:hover:border-white dark:hover:bg-white/10"
               labelIdle="Conversar sobre um projeto"
               labelActive="Abrindo contato"
               ariaLabel="Conversar sobre um projeto"

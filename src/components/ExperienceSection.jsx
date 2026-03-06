@@ -115,11 +115,11 @@ const ExperienceSection = () => {
       className="relative w-full overflow-hidden bg-background px-6 py-24 lg:px-8"
     >
       <motion.div
-        className="absolute left-10 top-20 h-72 w-72 rounded-full bg-primary/5 blur-3xl"
+        className="absolute left-10 top-20 h-72 w-72 rounded-full bg-primary/5 blur-xl md:blur-3xl"
         style={{ y: y1 }}
       />
       <motion.div
-        className="absolute bottom-20 right-10 h-80 w-80 rounded-full bg-primary/10 blur-3xl"
+        className="absolute bottom-20 right-10 h-80 w-80 rounded-full bg-primary/10 blur-xl md:blur-3xl"
         style={{ y: y2 }}
       />
 
@@ -159,7 +159,7 @@ const ExperienceSection = () => {
             >
               <div className="absolute -left-[9px] top-0 h-4 w-4 rounded-full border-4 border-background bg-primary" />
 
-              <div className="rounded-3xl border border-border bg-card p-6 shadow-[0_16px_36px_rgba(17,17,17,0.08)] transition-all duration-300 hover:border-primary/20 hover:shadow-[0_22px_46px_rgba(17,17,17,0.12)]">
+              <div className="rounded-3xl border border-border bg-card p-6 shadow-sm transition-all duration-300 md:shadow-[0_16px_36px_rgba(17,17,17,0.08)] md:hover:border-primary/20 md:hover:shadow-[0_22px_46px_rgba(17,17,17,0.12)]">
                 <div className="mb-3 flex flex-col gap-2 sm:flex-row sm:items-start sm:justify-between">
                   <div>
                     <h3 className="text-xl font-semibold text-foreground">{exp.company}</h3>
@@ -205,7 +205,7 @@ const ExperienceSection = () => {
       </motion.div>
 
       <div className="pointer-events-none absolute -top-28 inset-x-0 w-full opacity-20">
-        <div className="absolute left-1/2 h-64 w-2/3 -translate-x-1/2 rounded-full bg-primary/20 blur-3xl" />
+        <div className="absolute left-1/2 h-64 w-2/3 -translate-x-1/2 rounded-full bg-primary/20 blur-xl md:blur-3xl" />
       </div>
     </section>
   );

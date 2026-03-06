@@ -56,11 +56,11 @@ const EducationSection = () => {
       className="relative w-full overflow-hidden bg-background px-6 py-24 lg:px-8"
     >
       <motion.div
-        className="absolute right-10 top-32 h-72 w-72 rounded-full bg-primary/5 blur-3xl"
+        className="absolute right-10 top-32 h-72 w-72 rounded-full bg-primary/5 blur-xl md:blur-3xl"
         style={{ y: y1 }}
       />
       <motion.div
-        className="absolute bottom-32 left-10 h-80 w-80 rounded-full bg-primary/10 blur-3xl"
+        className="absolute bottom-32 left-10 h-80 w-80 rounded-full bg-primary/10 blur-xl md:blur-3xl"
         style={{ y: y2 }}
       />
 
@@ -98,7 +98,7 @@ const EducationSection = () => {
               variants={itemVariants}
               className="group relative"
             >
-              <div className="h-full rounded-3xl border border-border bg-card p-6 shadow-[0_16px_36px_rgba(17,17,17,0.08)] transition-all duration-300 hover:border-primary/20 hover:shadow-[0_22px_46px_rgba(17,17,17,0.12)]">
+              <div className="h-full rounded-3xl border border-border bg-card p-6 shadow-sm transition-all duration-300 md:shadow-[0_16px_36px_rgba(17,17,17,0.08)] md:hover:border-primary/20 md:hover:shadow-[0_22px_46px_rgba(17,17,17,0.12)]">
                 <div className="mb-4 flex items-start justify-between">
                   <GraduationCap className="h-10 w-10 text-primary" />
                   <span
@@ -126,7 +126,7 @@ const EducationSection = () => {
       </motion.div>
 
       <div className="pointer-events-none absolute -bottom-28 inset-x-0 w-full opacity-20">
-        <div className="absolute left-1/2 h-64 w-2/3 -translate-x-1/2 rounded-full bg-primary/20 blur-3xl" />
+        <div className="absolute left-1/2 h-64 w-2/3 -translate-x-1/2 rounded-full bg-primary/20 blur-xl md:blur-3xl" />
       </div>
     </section>
   );

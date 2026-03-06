@@ -163,7 +163,7 @@ export const LiquidGlassMenu: React.FC<LiquidGlassMenuProps> = ({
 
   return (
     <nav className={cn('relative flex max-w-full', className)}>
-      <div className="relative flex w-full max-w-full items-center gap-0 overflow-x-auto rounded-full border border-border/70 bg-background/75 p-1 shadow-[0_8px_30px_rgba(0,0,0,0.18)] backdrop-blur-xl [scrollbar-width:none] [-ms-overflow-style:none] [&::-webkit-scrollbar]:hidden sm:w-auto sm:p-1.5 dark:shadow-[0_8px_30px_rgba(0,0,0,0.35)]">
+      <div className="relative flex w-full max-w-full items-center gap-0 overflow-x-auto rounded-full border border-border/70 bg-background/75 p-1 shadow-sm backdrop-blur-sm [scrollbar-width:none] [-ms-overflow-style:none] [&::-webkit-scrollbar]:hidden sm:w-auto sm:p-1.5 md:shadow-[0_8px_30px_rgba(0,0,0,0.18)] md:backdrop-blur-xl dark:md:shadow-[0_8px_30px_rgba(0,0,0,0.35)]">
         {items.map((item, index) => (
           <InternalMenuItem
             key={`${item.title}-${index}`}
