@@ -1,277 +1,125 @@
-import styled from "styled-components";
-import { FaGithub, FaLinkedin } from "react-icons/fa";
-import { useTranslation } from "react-i18next";
-import { media } from "../styles/media";
+import { useState } from 'react'
+import { TextEffect } from '@/components/ui/text-effect'
+import AnimatedGenerateButton from '@/components/ui/animated-generate-button-shadcn-tailwind'
+import { Card } from '@/components/ui/card'
+import { LiquidGlassMenu } from '@/components/ui/liquid-glass-menu'
+import { Spotlight } from '@/components/ui/spotlight'
+import { SplineScene } from '@/components/ui/splite'
+import { AnimatedThemeToggle } from '@/components/ui/animated-theme-toggle'
 
-const HeroShell = styled.div`
-  position: relative;
-  width: min(1180px, 100%);
-  margin: 0 auto;
-  min-height: 100vh;
-  padding: 156px 24px 84px;
-  display: grid;
-  align-items: center;
-
-  ${media.tablet`
-    min-height: auto;
-    padding-top: 136px;
-  `}
-
-  ${media.mobile`
-    padding: 112px 16px 48px;
-  `}
-`;
-
-const AmbientHalo = styled.div`
-  position: absolute;
-  top: 12%;
-  right: 6%;
-  width: 420px;
-  height: 420px;
-  border-radius: 50%;
-  pointer-events: none;
-  background:
-    radial-gradient(circle, rgba(126, 116, 241, 0.18), transparent 56%),
-    radial-gradient(circle at 30% 30%, rgba(255, 255, 255, 0.08), transparent 22%);
-  filter: blur(44px);
-  opacity: 0.9;
-
-  ${media.mobile`
-    width: 220px;
-    height: 220px;
-    top: 10%;
-    right: -12%;
-    opacity: 0.6;
-  `}
-`;
-
-const Content = styled.div`
-  position: relative;
-  z-index: 1;
-  display: grid;
-  gap: 26px;
-  max-width: 980px;
-
-  ${media.mobile`
-    gap: 18px;
-  `}
-`;
-
-const Eyebrow = styled.p`
-  margin: 0;
-  font-size: 12px;
-  font-weight: 700;
-  letter-spacing: 0.18em;
-  text-transform: uppercase;
-  color: rgba(255, 255, 255, 0.52);
-
-  ${media.mobile`
-    font-size: 11px;
-    letter-spacing: 0.14em;
-  `}
-`;
-
-const Title = styled.h1`
-  margin: 0;
-  font-family: "Plus Jakarta Sans", sans-serif;
-  font-size: clamp(52px, 8vw, 98px);
-  line-height: 0.92;
-  letter-spacing: -0.055em;
-  max-width: 10ch;
-
-  span {
-    display: block;
-  }
-
-  .accent {
-    color: #cfcaff;
-  }
-
-  ${media.mobile`
-    max-width: none;
-    font-size: clamp(40px, 12vw, 58px);
-    line-height: 0.98;
-  `}
-`;
-
-const ActionRow = styled.div`
-  display: flex;
-  flex-wrap: wrap;
-  gap: 14px;
-  align-items: center;
-
-  ${media.mobile`
-    display: grid;
-    grid-template-columns: 1fr;
-  `}
-`;
-
-const PrimaryButton = styled.a`
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  min-height: 54px;
-  padding: 0 24px;
-  border-radius: 999px;
-  background:
-    linear-gradient(180deg, rgba(126, 116, 241, 0.92), rgba(126, 116, 241, 0.74)),
-    rgba(255, 255, 255, 0.02);
-  box-shadow: 0 18px 34px rgba(126, 116, 241, 0.2);
-  color: #fff;
-  font-size: 15px;
-  font-weight: 700;
-  transition:
-    transform 0.22s ease,
-    box-shadow 0.22s ease;
-
-  &:hover {
-    transform: translateY(-2px);
-    box-shadow: 0 22px 40px rgba(126, 116, 241, 0.24);
-  }
-
-  ${media.mobile`
-    width: 100%;
-  `}
-`;
-
-const SocialRow = styled.div`
-  display: flex;
-  align-items: center;
-  gap: 14px;
-  color: rgba(255, 255, 255, 0.62);
-
-  ${media.mobile`
-    flex-wrap: wrap;
-    gap: 10px;
-  `}
-`;
-
-const SocialLabel = styled.span`
-  font-size: 14px;
-  color: rgba(255, 255, 255, 0.56);
-
-  ${media.mobile`
-    width: 100%;
-    font-size: 13px;
-    line-height: 1.6;
-  `}
-`;
-
-const SocialIcon = styled.a`
-  width: 42px;
-  height: 42px;
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  border-radius: 50%;
-  border: 1px solid rgba(255, 255, 255, 0.08);
-  background: rgba(255, 255, 255, 0.03);
-  color: #fff;
-  transition:
-    transform 0.22s ease,
-    border-color 0.22s ease,
-    background-color 0.22s ease;
-
-  &:hover {
-    transform: translateY(-2px);
-    border-color: rgba(126, 116, 241, 0.32);
-    background: rgba(126, 116, 241, 0.08);
-  }
-`;
-
-const StatsGrid = styled.div`
-  display: grid;
-  grid-template-columns: repeat(3, minmax(0, 1fr));
-  gap: 14px;
-
-  ${media.tablet`
-    grid-template-columns: repeat(2, minmax(0, 1fr));
-  `}
-
-  ${media.mobile`
-    grid-template-columns: 1fr;
-    gap: 10px;
-  `}
-`;
-
-const StatCard = styled.div`
-  padding: 18px;
-  border-radius: 24px;
-  border: 1px solid rgba(255, 255, 255, 0.08);
-  background:
-    linear-gradient(180deg, rgba(255, 255, 255, 0.05), rgba(255, 255, 255, 0.02)),
-    rgba(255, 255, 255, 0.02);
-  backdrop-filter: blur(12px);
-
-  ${media.mobile`
-    padding: 16px;
-    border-radius: 20px;
-  `}
-
-  strong {
-    display: block;
-    font-family: "Plus Jakarta Sans", sans-serif;
-    font-size: 20px;
-    margin-bottom: 6px;
-  }
-
-  span {
-    display: block;
-    font-size: 13px;
-    line-height: 1.6;
-    color: rgba(255, 255, 255, 0.62);
-  }
-`;
+const tags = ['Apps', 'Sistemas internos', 'Automação', 'IA aplicada', 'Integrações']
+const projectContactLink = 'https://w.app/juansouza'
 
 const HeroSection = () => {
-  const { t } = useTranslation();
-  const heroStats = t("hero-stats", { returnObjects: true });
+  const [isTextBlockHovered, setIsTextBlockHovered] = useState(false)
 
   return (
-    <HeroShell>
-      <AmbientHalo />
+    <section id="home" className="relative min-h-[100svh] overflow-hidden bg-card">
+      <Card className="relative min-h-[100svh] w-full overflow-hidden rounded-none border-0 bg-black/[0.96] shadow-none">
+        <Spotlight className="-top-40 left-0 md:left-60 md:-top-20" fill="white" />
 
-      <Content>
-        <Eyebrow>Software Engineer</Eyebrow>
+        <div className="absolute inset-y-0 right-0 z-[2] w-full overflow-hidden sm:w-[78%] md:w-[60%] lg:w-[48%]">
+          <SplineScene
+            scene="https://prod.spline.design/kZDDjO5HuC9GJUM2/scene.splinecode"
+            className={`absolute inset-0 h-full w-full origin-center scale-[0.95] translate-x-[12%] transition-all duration-300 ease-out sm:scale-[0.88] sm:translate-x-[16%] lg:scale-[0.9] lg:translate-x-[14%] ${
+              isTextBlockHovered
+                ? 'pointer-events-none opacity-[0.44] sm:opacity-[0.64]'
+                : 'pointer-events-auto opacity-[0.54] sm:opacity-[0.8]'
+            }`}
+          />
+        </div>
 
-        <Title>
-          <span>{t("hero-line-1")}</span>
-          <span className="accent">{t("hero-line-2")}</span>
-        </Title>
+        <div className="pointer-events-none absolute inset-y-0 left-0 z-[3] w-full sm:w-[78%] md:w-[66%] lg:w-[62%]" />
+        <div className="pointer-events-none absolute inset-0 z-[4] bg-gradient-to-r from-black/88 via-black/64 to-black/24 sm:from-black/86 sm:via-black/58 sm:to-black/22 lg:from-black/84 lg:via-black/54 lg:to-black/20" />
+        <div className="pointer-events-none absolute inset-0 z-[4] bg-[radial-gradient(circle_at_78%_42%,rgba(0,0,0,0.48)_0%,rgba(0,0,0,0.56)_28%,rgba(0,0,0,0.64)_56%,rgba(0,0,0,0.74)_100%)] sm:bg-[radial-gradient(circle_at_78%_42%,rgba(0,0,0,0.42)_0%,rgba(0,0,0,0.5)_24%,rgba(0,0,0,0.6)_52%,rgba(0,0,0,0.72)_100%)]" />
 
-        <ActionRow>
-          <PrimaryButton href="#portfolio">{t("hero-primary-cta")}</PrimaryButton>
-        </ActionRow>
+        <div className="pointer-events-none relative z-10 flex min-h-[100svh] flex-col p-4 pb-8 sm:p-6 sm:pb-10 lg:p-10">
+          <nav className="pointer-events-auto mb-5 flex items-center gap-2 sm:mb-8">
+            <div className="min-w-0 flex-1">
+              <LiquidGlassMenu
+                className="w-full sm:w-auto"
+                items={[
+                  { title: 'Sobre', href: '?section=home#home' },
+                  { title: 'Projetos', href: '?section=portfolio#portfolio' },
+                  { title: 'Experiência', href: '?section=experience#experience' },
+                  { title: 'Educação', href: '?section=education#education' },
+                  { title: 'Mentoria', href: '?section=mentorship#mentorship' },
+                ]}
+              />
+            </div>
+            <AnimatedThemeToggle />
+          </nav>
 
-        <SocialRow>
-          <SocialLabel>{t("hero-availability")}</SocialLabel>
-          <SocialIcon
-            href="https://github.com/juansouza09"
-            target="_blank"
-            rel="noopener noreferrer"
+          <div
+            className="pointer-events-auto mt-4 w-[92%] max-w-[22rem] sm:mt-10 sm:w-auto sm:max-w-3xl md:mt-24 lg:mt-24"
+            onMouseEnter={() => setIsTextBlockHovered(true)}
+            onMouseLeave={() => setIsTextBlockHovered(false)}
           >
-            <FaGithub />
-          </SocialIcon>
-          <SocialIcon
-            href="https://www.linkedin.com/in/juansouza9/"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <FaLinkedin />
-          </SocialIcon>
-        </SocialRow>
+            <div className="mb-6 sm:mb-8">
+              <p className="text-[11px] font-medium uppercase tracking-widest text-neutral-300 sm:text-xs">
+                Juan Souza - Software Engineer
+              </p>
+            </div>
 
-        <StatsGrid>
-          {heroStats.map((item) => (
-            <StatCard key={item.value}>
-              <strong>{item.value}</strong>
-              <span>{item.label}</span>
-            </StatCard>
-          ))}
-        </StatsGrid>
-      </Content>
-    </HeroShell>
-  );
-};
+            <div className="my-[10px]">
+              <p className="my-[10px] inline-flex rounded-full border border-white/20 bg-white/10 px-3 py-1 text-[11px] font-semibold tracking-wide text-white/90 backdrop-blur-sm sm:text-xs">
+                +4 anos solucionando problemas
+              </p>
 
-export default HeroSection;
+              <TextEffect
+                as="h1"
+                per="line"
+                preset="slide"
+                delay={0.15}
+                segmentWrapperClassName="block overflow-hidden"
+                className="my-[10px] font-display text-[clamp(2.2rem,10vw,4.8rem)] font-medium leading-[1.04] text-white sm:text-5xl lg:text-6xl xl:text-7xl"
+              >
+                {`Transformando problemas\nem software`}
+              </TextEffect>
+
+              <p className="my-[10px] max-w-xl text-[15px] leading-relaxed text-neutral-200 sm:text-sm">
+                Construo produtos, sistemas e automações usados no dia a dia de empresas.
+              </p>
+
+              <div className="my-[10px] flex max-w-[22rem] flex-wrap gap-1.5 sm:max-w-none sm:gap-2">
+                {tags.map((tag) => (
+                  <span
+                    key={tag}
+                    className="rounded-full border border-white/20 bg-black/30 px-2.5 py-1.5 text-[11px] font-medium text-neutral-100 backdrop-blur-sm sm:px-3 sm:text-xs"
+                  >
+                    {tag}
+                  </span>
+                ))}
+              </div>
+            </div>
+          </div>
+
+          <div className="pointer-events-auto mt-6 mb-8 flex flex-col items-stretch gap-6 sm:mt-8 sm:mb-10 sm:flex-row sm:flex-wrap sm:items-center">
+            <a
+              href="#portfolio"
+              className="inline-flex h-[42px] w-full items-center justify-center rounded-2xl border border-white/35 bg-transparent px-5 text-sm font-medium text-white transition-colors hover:border-white hover:bg-white/8 sm:w-auto"
+            >
+              Explorar projetos
+            </a>
+            <AnimatedGenerateButton
+              className="w-full sm:w-auto"
+              buttonClassName="h-[42px] w-full rounded-2xl px-5 text-sm font-medium sm:w-auto"
+              labelIdle="Conversar sobre um projeto"
+              labelActive="Abrindo contato"
+              ariaLabel="Conversar sobre um projeto"
+              minimal
+              showIcon={false}
+              clickAnimationMs={900}
+              onClick={() => {
+                window.open(projectContactLink, '_blank', 'noopener,noreferrer')
+              }}
+            />
+          </div>
+
+        </div>
+      </Card>
+    </section>
+  )
+}
+
+export default HeroSection

@@ -1,4 +1,4 @@
-@import url("https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Plus+Jakarta+Sans:wght@600;700;800&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Plus+Jakarta+Sans:wght@600;700;800&family=Sora:wght@400;500;600;700;800&display=swap");
 
 #root {
   width: 100%;
@@ -11,43 +11,19 @@
 .app-shell {
   position: relative;
   min-height: 100vh;
-  background:
-    radial-gradient(circle at top right, rgba(126, 116, 241, 0.14), transparent 32%),
-    radial-gradient(circle at 20% 20%, rgba(255, 255, 255, 0.04), transparent 26%),
-    linear-gradient(180deg, #0c0c0e 0%, #121214 24%, #141419 58%, #101012 100%);
-  color: #ffffff;
+  background: #d9d9dc;
+  color: #17181d;
   overflow: hidden;
 }
 
 .app-glow {
-  position: fixed;
-  inset: auto;
-  pointer-events: none;
-  z-index: 0;
-  filter: blur(90px);
-  opacity: 0.8;
-}
-
-.app-glow-primary {
-  top: -120px;
-  right: -80px;
-  width: 320px;
-  height: 320px;
-  background: rgba(126, 116, 241, 0.2);
-}
-
-.app-glow-secondary {
-  left: -80px;
-  top: 38%;
-  width: 280px;
-  height: 280px;
-  background: rgba(126, 116, 241, 0.12);
+  display: none;
 }
 
 .app-main {
   position: relative;
   z-index: 1;
-  padding: 0 0 2rem;
+  padding: 0 0 2.5rem;
 }
 
 .app-section {
@@ -56,22 +32,11 @@
 
 .app-hero-section {
   position: relative;
+  padding-top: 18px;
 }
 
 @media (max-width: 768px) {
-  .app-glow-primary {
-    top: -140px;
-    right: -120px;
-    width: 220px;
-    height: 220px;
-    opacity: 0.5;
-  }
-
-  .app-glow-secondary {
-    left: -120px;
-    top: 45%;
-    width: 180px;
-    height: 180px;
-    opacity: 0.35;
+  .app-main {
+    padding-bottom: 1.5rem;
   }
 }
